@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardRoutes } from './dashboard.routing';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { ViewProductComponent } from './products/view-product/view-product.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { DashboardComponent } from './dashboard.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { DashboardComponent } from './dashboard.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    RouterModule.forChild(DashboardRoutes),
   ]
 })
 export class DashboardModule { }
