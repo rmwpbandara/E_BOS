@@ -11,12 +11,13 @@ export const DashboardRoutes: Routes = [
   {
     path: '', 
     component: DashboardComponent,
+    // product routes
     children: [
       { path: 'products-add', component: AddProductComponent },
       { path: 'products-view', component: ViewProductComponent },
       { path: 'products-edit', component: EditProductComponent }
     ]
-  }
-  //please add bellow for another dasgboard routes
+    // please add bellow for another dasgboard routes
 
+  }
 ];
