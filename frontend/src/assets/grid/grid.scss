@@ -1,0 +1,70 @@
+/* CONTAINER */
+$small-min-width: 768px;
+$medium-min-width: 992px;
+$large-min-width: 1200px;
+
+@mixin container {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+
+	@media (min-width: $small-min-width) {
+		width: 750px;
+	}
+
+	@media (min-width: $medium-min-width) {
+		width: 970px;
+	}
+
+	@media (min-width: $large-min-width) {
+		width: 1170px;
+	}
+}
+
+@mixin row {
+	/* ROW */
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-gap: 20px;
+}
+
+@mixin small {
+	@media (min-width: $small-min-width) {
+		@content;
+	}
+}
+
+@mixin medium {
+	@media (min-width: $medium-min-width) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media (min-width: $large-min-width) {
+		@content;
+	}
+}
+
+@mixin columns($col-span, $col-start: auto) {
+	grid-column: $col-start / span $col-span;
+}
+
+@mixin small-columns($col-span, $col-start: auto) {
+	@include small {
+		@include columns($col-span, $col-start);
+	}
+}
+
+@mixin medium-columns($col-span, $col-start: auto) {
+	@include medium {
+		@include columns($col-span, $col-start);
+	}
+}
+
+@mixin large-columns($col-span, $col-start: auto) {
+	@include large {
+		@include columns($col-span, $col-start);
+	}
+}
