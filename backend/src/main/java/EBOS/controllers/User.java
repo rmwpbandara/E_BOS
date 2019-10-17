@@ -19,8 +19,8 @@ public class User {
         return userServices.findAllUsers();
     }
 
-    @PostMapping("/add")
-    public String addUser(@RequestBody UserModel userData){
-        return userServices.saveUser(userData);
+    @PostMapping("/register")
+    public String registerUser(@RequestBody UserModel userData){
+        return userServices.registerUser(userData);
     }
 }

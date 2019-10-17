@@ -22,9 +22,8 @@ public class UserServiceImpl implements UserServices {
     }
 
     @Override
-    public String saveUser(UserModel userData) {
+    public String registerUser(UserModel userData) {
         userRepository.save(userData);
-
-        return "data seved";
+        return "registered";
     }
 }
