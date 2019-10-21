@@ -9,6 +9,7 @@ import bootstrap from "bootstrap";
 import { GuestHeaderComponent } from './component/guest-header/guest-header.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { RouterModule } from '@angular/router';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
     RegisterComponent,
     GuestHeaderComponent,
-    UserViewComponent
+    UserViewComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
