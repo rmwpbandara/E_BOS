@@ -1,10 +1,53 @@
 @import '../../assets/grid/grid.scss';
 
+$navbar-bachground : #122143;
+$navbar-color : white;
+$navbar-group-line-color : white;
+
 .dashboard{
     @include row;
     grid-gap: 0px;
     .sidebar{
 
+        .dashboard-brand{
+            @include row;
+            align-items: center;
+            height: 50px;
+            a{
+                @include columns(12);
+                color: $navbar-color;
+                font-size: 30px;
+                margin-left: 40px;
+                font-weight: bold;
+            }
+            
+        }
+        .navbar-nav{
+            border-top: 1px solid $navbar-group-line-color;
+            .nav-item{
+                .nav-link{
+                    margin-left: 40px;
+                    color: $navbar-color;
+                    font-size: 18px;
+                }
+            }
+
+            .nav-group-border-top{
+                border-top: 1px solid $navbar-group-line-color;
+            }
+            .nav-group-border-bottom{
+                border-bottom: 1px solid $navbar-group-line-color;
+            }
+            .padding-top{
+                padding-top: 10px;
+            }
+            .padding-bottom{
+                padding-bottom: 10px;
+            }
+            
+        }
+        background-color: $navbar-bachground;
+        height: 100vh;
         // @include columns(12);
         // @include small-columns(5, 6);
         // @include medium-columns(5, 6);
@@ -14,7 +57,28 @@
         }
 
     }
+
+    
+
     .content{
+        .dashboard-navbar{
+            @include row;
+            align-items: center;
+            background-color: $navbar-bachground;
+            height: 50px;
+            .navbar-link{
+                color: $navbar-color;
+            }
+            .user-name{
+                @include small-columns(1, 11);
+            }
+            .logout-link{
+                @include small-columns(1, 12);
+            }
+        }
+        .content-outlet{
+           margin: 20px;
+        }
         @include large-columns(10, 3);
 
     }

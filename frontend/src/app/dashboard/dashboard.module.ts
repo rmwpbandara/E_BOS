@@ -8,7 +8,6 @@ import { EditProductComponent } from './products/edit-product/edit-product.compo
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,

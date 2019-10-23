@@ -1,7 +1,9 @@
 <div class="dashboard">
   <div class="sidebar">
 
-    <!-- Navigation -->
+    <div class="dashboard-brand">
+      <a>E-BOS</a>
+    </div>
     <ul class="navbar-nav">
         <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
@@ -13,9 +15,13 @@
 
   </div>
   <div class="content">
-      <div>dashboard route</div>
-
-      <router-outlet></router-outlet>
+      <div class="dashboard-navbar">
+        <a class="navbar-link user-name">User Name</a>
+        <a class="navbar-link logout-link">Logout</a>
+      </div>
+      <div class="content-outlet">
+          <router-outlet></router-outlet>
+      </div>
   </div>
 
 </div>

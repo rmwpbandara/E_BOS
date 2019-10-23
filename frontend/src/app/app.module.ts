@@ -10,6 +10,9 @@ import { GuestHeaderComponent } from './component/guest-header/guest-header.comp
 import { UserViewComponent } from './user-view/user-view.component';
 import { RouterModule } from '@angular/router';
 import { SearchResultComponent } from './search-result/search-result.component';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatFormFieldModule } from '@angular/material/form-field';
+// import {MatInputModule, MatAutocompleteModule, MatCheckboxModule, MatDatepickerModule, MatRadioModule, MatSelectModule, MatSliderModule, MatSlideToggleModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,17 @@ import { SearchResultComponent } from './search-result/search-result.component';
     AppRoutingModule,
     RouterModule.forRoot([
       { path: '', component: UserViewComponent }
-    ])
+    ]),
+    // BrowserAnimationsModule,
+    // MatFormFieldModule,
+    // MatInputModule,
+    // MatAutocompleteModule,
+    // MatCheckboxModule,
+    // MatDatepickerModule,
+    // MatRadioModule,
+    // MatSelectModule,
+    // MatSliderModule,
+    // MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
