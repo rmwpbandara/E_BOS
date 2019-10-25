@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ProductService } from 'src/app/_service/custom/product.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-product',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductComponent implements OnInit {
 
-  constructor() { }
+  productAddForm: FormGroup;
+  
+  constructor(fb: FormBuilder, private productService:ProductService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() : void{
+    this.productAddForm = new FormGroup({
+      product_name: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required),
+      weight: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required),
+    });
+  }
+
+  addProduct(){
+    let form_data = this.productAddForm.value ;
+    // console.log('form_data', form_data);
+    this.productService.addProduct(form_data);
+
+
+    // this.userService.signUpUser(userdata).subscribe(res=>{
+    //   if(res['ok']){
+    //     this.router.navigate(['/login'])
+    //   }
+    // })
   }
 
 }

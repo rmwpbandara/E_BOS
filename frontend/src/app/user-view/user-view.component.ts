@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-user-view',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserViewComponent implements OnInit {
 
+  searchForm: FormGroup;
+  
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() : void{
+    this.searchForm = new FormGroup({
+      search_keyword: new FormControl(''),
+      price_range: new FormControl(''),
+      manufacture: new FormControl(''),
+    });
+  }
+
+  onSubmit(){
+    let form_data = this.searchForm.value ;
+    console.log('form_data', form_data);
   }
 
 }

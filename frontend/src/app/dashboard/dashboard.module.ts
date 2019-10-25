@@ -7,6 +7,7 @@ import { ViewProductComponent } from './products/view-product/view-product.compo
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule.forChild(DashboardRoutes),
+    SharedModuleModule,
   ]
 })
 export class DashboardModule { }
