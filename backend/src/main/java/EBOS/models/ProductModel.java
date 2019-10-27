@@ -17,7 +17,7 @@ public class ProductModel {
     private double price;
 
     @Column(name = "weight")
-    private double weight;
+    private String weight;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -53,11 +53,11 @@ public class ProductModel {
         this.price = price;
     }
 
-    public double getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 

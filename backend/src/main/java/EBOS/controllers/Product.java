@@ -15,19 +15,13 @@ public class Product {
     private ProductService productServices;
 
     @GetMapping("/all") // use get request
-    public String allProducts(){
 
-        return "Called for all";
+    public List<ProductModel> allProducts(){
+        return productServices.findAllProducts();
     }
-
-//    public List<ProductModel> allProducts(){
-//        return productServices.findAllProducts();
-//    }
 
     @PostMapping("/add")
     public String addProduct(@RequestBody ProductModel productData){
-
-        return "called";
-//        return productServices.addProduct(productData);
+        return productServices.addProduct(productData);
     }
 }
