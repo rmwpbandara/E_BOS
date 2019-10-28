@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController // identified this is a rest controller
 @RequestMapping("/product") //map api url
@@ -15,7 +16,6 @@ public class Product {
     private ProductService productServices;
 
     @GetMapping("/all") // use get request
-
     public List<ProductModel> allProducts(){
         return productServices.findAllProducts();
     }
@@ -23,5 +23,16 @@ public class Product {
     @PostMapping("/add")
     public String addProduct(@RequestBody ProductModel productData){
         return productServices.addProduct(productData);
+    }
+
+    @GetMapping ("/find/{id}")
+    public Optional <ProductModel> getProductById(@PathVariable Integer id) {
+        return productServices.findById(id);
+    }
+
+    @PutMapping ("/update")
+    public String updateProduct(@RequestBody ProductModel newProductData) {
+
+        return productServices.updateProduct(newProductData);
     }
 }
