@@ -1,7 +1,7 @@
 <form [formGroup]="productAddForm" (ngSubmit)="addProduct(productAddForm.value)">
     <div class="form-group">
         <label >Product Name</label>
-        <input type="text" class="form-control" formControlName="product_name" placeholder="Enter Product Name">
+        <input type="text" class="form-control" formControlName="name" placeholder="Enter Product Name">
         <small class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
@@ -17,6 +17,18 @@
     <div class="form-group">
         <label>Quantity</label>
         <input type="number" class="form-control" formControlName="quantity" placeholder="Enter Quantity of the Product">
+    </div>
+
+    <div class="form-group">
+        <label >Product Description</label>
+        <input type="text" class="form-control" formControlName="description" placeholder="Enter Product Description">
+        <small class="form-text text-muted">description.</small>
+    </div>
+
+    <div class="form-group">
+        <label >Product Image</label>
+        <input type="file" class="form-control" formControlName="image_url">
+        <small class="form-text text-muted">description.</small>
     </div>
     <!-- <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">

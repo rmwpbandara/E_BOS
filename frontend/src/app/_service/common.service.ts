@@ -12,6 +12,9 @@ export class CommonService {
 
   apiPost(requestBody: any, apiURL: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
+
+    console.log('headers', headers);
+    
     return this.http
       .post(this.rootPath + apiURL, requestBody, { headers: headers})
   }

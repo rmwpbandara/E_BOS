@@ -9,9 +9,10 @@ export class ProductService {
   constructor(private commonsService:CommonService) { }
 
   addProduct(value){
-    console.log('in service file');
-    
-    console.log(value);
-    // return this.commonsService.apiPost(value, 'user/add');
+    return this.commonsService.apiPost(value, 'product/add');
+  }
+
+  viewProducts(){
+    return this.commonsService.apiGet('product/all');
   }
 }
