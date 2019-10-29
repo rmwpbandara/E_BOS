@@ -13,7 +13,7 @@ export class AddProductComponent implements OnInit {
 
   productAddForm: FormGroup;
 
-  constructor(fb: FormBuilder, private productService:ProductService, private router: Router) {
+  constructor(fb: FormBuilder, private productService: ProductService, private router: Router) {
     this.productAddForm = fb.group({
       name: [null, Validators.required],
       price: [null, Validators.required],
@@ -25,22 +25,28 @@ export class AddProductComponent implements OnInit {
       // password: [null, Validators.compose([Validators.required, Validators.minLength(8)])],
       // repeatpassword: [null, Validators.compose([Validators.required, Validators.minLength(8)])]
     });
-   }
+  }
 
   ngOnInit() {
 
   }
-  addProduct(form_data){
-    this.productService.addProduct(form_data).subscribe(res=>{
+  addProduct(form_data) {
+    this.productService.addProduct(form_data).subscribe(res => {
       // console.log('res => ', res);
-      if(res['ok']){
-        Swal.fire(
-          'Good job!',
-          'Product Added Successfully!',
-          'success'
-        )
+      if (res['ok']) {
+
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Product Added Successfully !',
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+        this.productAddForm.reset();
+
       }
-      
+
     })
   }
 
