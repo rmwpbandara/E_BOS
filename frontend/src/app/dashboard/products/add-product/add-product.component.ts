@@ -45,6 +45,7 @@ export class AddProductComponent implements OnInit {
 
         this.productAddForm.reset();
 
+        this.router.navigate(['/dashboard/products-view']);
       }
 
     })

@@ -17,7 +17,9 @@
   <div class="content">
       <div class="dashboard-navbar">
         <a class="navbar-link user-name">User Name</a>
-        <a class="navbar-link logout-link">Logout</a>
+        <!-- <a class="navbar-link logout-link">Logout</a> -->
+        <a class="navbar-link logout-link" [routerLink]="['/']">welcome</a>
+
       </div>
       <div class="content-outlet">
           <router-outlet></router-outlet>
