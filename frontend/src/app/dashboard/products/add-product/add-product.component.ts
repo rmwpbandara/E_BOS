@@ -40,7 +40,7 @@ export class AddProductComponent implements OnInit {
           type: 'success',
           title: 'Product Added Successfully !',
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         });
 
         this.productAddForm.reset();
