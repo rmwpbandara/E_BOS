@@ -8,13 +8,14 @@ import { EditProductComponent } from './products/edit-product/edit-product.compo
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
 import { SharedModuleModule } from '../shared-module/shared-module.module';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     AddProductComponent, 
     ViewProductComponent, 
-    EditProductComponent
+    EditProductComponent, ProfileSettingsComponent
   ],
   imports: [
     CommonModule,

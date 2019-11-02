@@ -1,3 +1,5 @@
-2019-10-29 21:22:21,170 WARN  [DefaultSoapUICore] Missing folder [C:\Users\rmwpb\ext] for external libraries
-2019-10-29 21:22:22,021 INFO  [DefaultSoapUICore] initialized soapui-settings from [C:\Users\rmwpb\soapui-settings.xml]
-2019-10-29 21:22:23,760 INFO  [WorkspaceImpl] Loading workspace from [C:\Users\rmwpb\intellij-soapui-workspace.xml]
+2019-11-02 11:45:30,638 WARN  [DefaultSoapUICore] Missing folder [C:\Users\rmwpb\ext] for external libraries
+2019-11-02 11:45:32,320 INFO  [DefaultSoapUICore] initialized soapui-settings from [C:\Users\rmwpb\soapui-settings.xml]
+2019-11-02 11:45:34,781 INFO  [WorkspaceImpl] Loading workspace from [C:\Users\rmwpb\intellij-soapui-workspace.xml]
+2019-11-02 16:10:08,636 INFO  [WorkspaceImpl] Saved workspace to [C:\Users\rmwpb\intellij-soapui-workspace.xml]
+2019-11-02 16:10:08,652 INFO  [DefaultSoapUICore] Settings saved to [C:\Users\rmwpb\soapui-settings.xml]

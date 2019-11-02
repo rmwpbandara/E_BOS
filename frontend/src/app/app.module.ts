@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SharedModuleModule } from './shared-module/shared-module.module';
 import { HttpModule } from '@angular/http';
+import { ManufacturerProfileComponent } from './manufacturer-profile/manufacturer-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpModule } from '@angular/http';
     RegisterComponent,
     GuestHeaderComponent,
     UserViewComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    ManufacturerProfileComponent
   ],
   imports: [
     BrowserModule,
