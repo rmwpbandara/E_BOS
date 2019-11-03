@@ -28,6 +28,9 @@ public class ProductModel {
     @Column(name = "image_url")
     private String image_url;
 
+    @Column(name = "seller_id")
+    private Integer seller_id;
+
 
     public Integer getId() {
         return id;
@@ -85,4 +88,11 @@ public class ProductModel {
         this.image_url = image_url;
     }
 
+    public Integer getSeller_id() {
+        return seller_id;
+    }
+
+    public void setSeller_id(Integer seller_id) {
+        this.seller_id = seller_id;
+    }
 }

@@ -3,37 +3,35 @@
     <div class="search-result-page">
             <h1 class="col-lg-12 text-center welcome-heading ">WELCOME TO E-BOS</h1>
             <div class="heading">
-                <form  class="" id="searchForm" action="#" method="post">
+                <form id="searchForm" [formGroup]="searchForm" (ngSubmit)="findProducts(searchForm.value)">
                     <div class="row pt-5">        
                         <div class="col-lg-12 mb-5">
                             <div class="row text-center">
                                 <div class="col-lg-4 col-md-5 col-sm-12 p-0">
-                                    <input type="text" class="form-control search-slt" placeholder="Enter Pickup City">
+                                    <input type="text" class="form-control search-slt" formControlName="product_name" placeholder="Type Product Name">
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <select class="form-control search-slt">
-                                        <option>Select Vehicle</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
+                                    <select class="form-control search-slt" formControlName="price_name">
+                                        <option>Price Range</option>
+                                        <option value="99">0-99</option>
+                                        <option value="199">100-199</option>
+                                        <option value="299">200-299</option>
+                                        <option value="399">300-399</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <select class="form-control search-slt">
-                                        <option>Select Vehicle</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
-                                        <option>Example one</option>
+                                    <select class="form-control search-slt" formControlName="manufacture_id">
+                                        <option value="">Manufactures</option>
+                                        <option value="1">Example 1</option>
+                                        <option value="2">Example 2</option>
+                                        <option value="3">Example 3</option>
+                                        <option value="4">Example 4</option>
+                                        <option value="5">Example 5</option>
+                                        <option value="6">Example 6</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                    <button type="button" class="btn btn-primary search-btn">Search</button>
+                                    <button type="submit" class="btn btn-primary search-btn" [disabled]="!searchForm.valid">Search</button>
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@
   <div class="sidebar">
 
     <div class="dashboard-brand">
-      <a>E-BOS</a>
+      <a [routerLink]="['/']">E-BOS</a>
     </div>
     <ul class="navbar-nav">
         <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
@@ -16,10 +16,8 @@
   </div>
   <div class="content">
       <div class="dashboard-navbar">
-        <a class="navbar-link user-name">User Name</a>
-        <!-- <a class="navbar-link logout-link">Logout</a> -->
-        <a class="navbar-link logout-link" [routerLink]="['/']">welcome</a>
-
+        <a class="navbar-link user-name">{{ username }}</a>
+        <a href="#" class="navbar-link logout-link" (click)="logout()">Logout</a>
       </div>
       <div class="content-outlet">
           <router-outlet></router-outlet>

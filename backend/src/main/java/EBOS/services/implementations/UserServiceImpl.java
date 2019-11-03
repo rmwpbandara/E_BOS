@@ -26,4 +26,21 @@ public class UserServiceImpl implements UserServices {
         userRepository.save(userData);
         return "registered";
     }
+
+    @Override
+    public UserModel loginUser(UserModel userData) {
+
+        String email = userData.getEmail();
+        UserModel logUser = userRepository.findByEmail(email);
+
+        if (userData.getPassword().equals(logUser.getPassword()) ) {
+            UserModel loggedUser = userRepository.findByEmail(email);
+            loggedUser.setPassword("null");
+            return loggedUser;
+        } else {
+            return userData;
+        }
+
+
+    }
 }

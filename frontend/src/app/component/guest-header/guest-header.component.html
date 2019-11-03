@@ -1,7 +1,5 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand text-white">E-BOSS</a>
-    <form class="form-inline" style="float: right;">
-        <a class="btn btn-success mr-3" [routerLink]="['/login']" type="submit">Login</a>
-        <a class="btn btn-success" [routerLink]="['/register']" type="submit">Signup</a>
-    </form>
+    <a class="navbar-brand text-white" [routerLink]="['/dashboard']" >E-BOSS</a>
+    <a class="btn btn-success mr-3" [routerLink]="['/login']">Login</a>
+    <a class="btn btn-success" [routerLink]="['/register']">Signup</a>
 </nav>

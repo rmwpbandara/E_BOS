@@ -12,8 +12,11 @@ import Swal from 'sweetalert2'
 export class AddProductComponent implements OnInit {
 
   productAddForm: FormGroup;
+  seller_id;
 
   constructor(fb: FormBuilder, private productService: ProductService, private router: Router) {
+    let data = JSON.parse(localStorage.getItem('user'));
+    this.seller_id = data['id'];
     this.productAddForm = fb.group({
       name: [null, Validators.required],
       price: [null, Validators.required],
@@ -25,12 +28,15 @@ export class AddProductComponent implements OnInit {
       // password: [null, Validators.compose([Validators.required, Validators.minLength(8)])],
       // repeatpassword: [null, Validators.compose([Validators.required, Validators.minLength(8)])]
     });
+    
   }
 
   ngOnInit() {
 
   }
   addProduct(form_data) {
+    form_data['seller_id'] = this.seller_id;
+
     this.productService.addProduct(form_data).subscribe(res => {
       // console.log('res => ', res);
       if (res['ok']) {
@@ -45,7 +51,7 @@ export class AddProductComponent implements OnInit {
 
         this.productAddForm.reset();
 
-        this.router.navigate(['/dashboard/products-view']);
+     // this.router.navigate(['/dashboard/products-view']);
       }
 
     })

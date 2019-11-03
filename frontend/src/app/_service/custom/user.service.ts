@@ -8,16 +8,16 @@ export class UserService {
 
   constructor(private commonsService:CommonService) { }
 
-  signUpUser(value){
+  register(value){
     console.log(value);
-    return this.commonsService.apiPost(value, 'user/add');
+    return this.commonsService.apiPost(value, 'user/register');
   }
 
   getUser(){
     return this.commonsService.apiGet('user/all');
   }
 
-  loginUser(value){
+  login(value){
     console.log(value);
     return this.commonsService.apiPost(value, 'user/login');
   }

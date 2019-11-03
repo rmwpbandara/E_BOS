@@ -14,13 +14,23 @@ public class User {
     @Autowired
     private UserServices userServices;
 
-    @GetMapping("/all") // use get request
-    public List<UserModel> allUsers(){
-        return userServices.findAllUsers();
-    }
+//    @CrossOrigin(origins = "*")
+//    @GetMapping("/all") // use get request
+//    public List<UserModel> allUsers(){
+//        return userServices.findAllUsers();
+//    }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/register")
     public String registerUser(@RequestBody UserModel userData){
         return userServices.registerUser(userData);
     }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping("/login")
+    public UserModel loginUser(@RequestBody UserModel userData){
+        return userServices.loginUser(userData);
+    }
+
+
 }

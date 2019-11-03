@@ -9,4 +9,5 @@ public interface UserServices {
     List<UserModel> findAllUsers();
 
     String registerUser(UserModel userData);
+    UserModel loginUser(UserModel userData);
 }

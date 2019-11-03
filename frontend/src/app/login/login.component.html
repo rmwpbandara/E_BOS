@@ -1,3 +1,19 @@
-<p>login works!</p>
+<div class="container">
 
-<a class="btn btn-success mr-3" [routerLink]="['/dashboard']" type="submit">Dashboard</a>
+        <form [formGroup]="userLoginForm" (ngSubmit)="login(userLoginForm.value)">
+    
+            <div class="form-group">
+                <label>email :</label>
+                <input type="email" class="form-control" formControlName="email"
+                    placeholder="Enter Quantity of the Product">
+            </div>
+    
+            <div class="form-group">
+                <label>password :</label>
+                <input type="text" class="form-control" formControlName="password" placeholder="Enter Product Description">
+    
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!userLoginForm.valid">Login</button>
+        </form>
+    </div>

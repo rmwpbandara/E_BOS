@@ -13,6 +13,9 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { SharedModuleModule } from './shared-module/shared-module.module';
 import { HttpModule } from '@angular/http';
 import { ManufacturerProfileComponent } from './manufacturer-profile/manufacturer-profile.component';
+import { AuthGuard } from './_gurds/auth.guard';
+import { UserService } from './_service/custom/user.service';
+import { CommonService } from './_service/common.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,7 @@ import { ManufacturerProfileComponent } from './manufacturer-profile/manufacture
     SharedModuleModule,
     HttpModule
   ],
-  providers: [],
+  providers: [CommonService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
