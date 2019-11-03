@@ -23,4 +23,8 @@ export class ProductService {
   updateProduct(form_data){
     return this.commonsService.apiPut(form_data, 'product/update');
   }
+
+  deleteProduct(id){
+    return this.commonsService.apiDelete('product/delete/'+id);
+  }
 }

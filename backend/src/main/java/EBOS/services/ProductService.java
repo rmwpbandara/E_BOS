@@ -15,4 +15,6 @@ public interface ProductService {
 
     String updateProduct(ProductModel newProductData);
 
+    String deleteProduct(Integer id);
+
 }

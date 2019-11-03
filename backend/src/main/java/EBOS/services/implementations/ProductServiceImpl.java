@@ -45,4 +45,10 @@ public class ProductServiceImpl implements ProductService {
         return msg;
     }
 
+    @Override
+    public String deleteProduct(Integer id) {
+        productRepository.deleteById(id);
+        return "success";
+    }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { ProductService } from 'src/app/_service/custom/product.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-product',
@@ -23,7 +24,6 @@ export class ViewProductComponent implements OnInit {
   }
 
   editProduct(product_id){
-
     this.productService.getProduct(product_id).subscribe(res => {
       localStorage.setItem('edit_product',res['_body']);
       this.router.navigate(['/dashboard/products-edit']);
@@ -31,7 +31,22 @@ export class ViewProductComponent implements OnInit {
   }
 
   deleteProduct(product_id){
-    console.log(product_id);
+    this.productService.deleteProduct(product_id).subscribe(res => {
+
+      if (res['ok']) {
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Product Delete Successfully !',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        location.reload();
+        this.router.navigate(['/dashboard/products-view']);
+        
+      }
+    });
+
   }
 
 }

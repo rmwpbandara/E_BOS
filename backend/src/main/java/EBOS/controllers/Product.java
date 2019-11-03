@@ -33,10 +33,15 @@ public class Product {
         return productServices.findById(id);
     }
 
-
     @CrossOrigin(origins = "*")
     @PutMapping ("/update")
     public String updateProduct(@RequestBody ProductModel newProductData) {
         return productServices.updateProduct(newProductData);
+    }
+
+    @CrossOrigin(origins = "*")
+    @DeleteMapping ("/delete/{id}")
+    public String deleteProduct(@PathVariable Integer id) {
+        return productServices.deleteProduct(id);
     }
 }
