@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ProductService } from '../_service/custom/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchResultComponent implements OnInit {
 
-  constructor() { }
+  products;
+  constructor(fb: FormBuilder, private productServiceObject: ProductService, private router: Router) { 
+
+    this.productServiceObject.viewProducts().subscribe(res=>{
+      let data =JSON.parse(res['_body']);
+      this.products = data;
+    });
+  }
 
   ngOnInit() {
   }
