@@ -33,6 +33,7 @@ public class Product {
         return productServices.findById(id);
     }
 
+
     @CrossOrigin(origins = "*")
     @PutMapping ("/update")
     public String updateProduct(@RequestBody ProductModel newProductData) {

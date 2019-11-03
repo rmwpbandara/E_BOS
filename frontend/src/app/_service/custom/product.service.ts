@@ -8,11 +8,19 @@ export class ProductService {
 
   constructor(private commonsService:CommonService) { }
 
-  addProduct(value){
-    return this.commonsService.apiPost(value, 'product/add');
+  addProduct(form_data){
+    return this.commonsService.apiPost(form_data, 'product/add');
   }
 
   viewProducts(){
     return this.commonsService.apiGet('product/all');
+  }
+
+  getProduct(id){
+    return this.commonsService.apiGet('product/find/'+id);
+  }
+
+  updateProduct(form_data){
+    return this.commonsService.apiPut(form_data, 'product/update');
   }
 }
