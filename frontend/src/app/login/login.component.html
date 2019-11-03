@@ -1,19 +1,26 @@
-<div class="container">
+<app-guest-header></app-guest-header>
+<div
+    style="background : url('../../assets/img/images.jpg'); object-fit:cover ; min-height:100vh; background-repeat: no-repeat; background-attachment: fixed;">
 
-        <form [formGroup]="userLoginForm" (ngSubmit)="login(userLoginForm.value)">
-    
-            <div class="form-group">
-                <label>email :</label>
-                <input type="email" class="form-control" formControlName="email"
-                    placeholder="Enter Quantity of the Product">
-            </div>
-    
-            <div class="form-group">
-                <label>password :</label>
-                <input type="text" class="form-control" formControlName="password" placeholder="Enter Product Description">
-    
-            </div>
-            
-            <button type="submit" class="btn btn-primary" [disabled]="!userLoginForm.valid">Login</button>
-        </form>
+    <div class="container" style="padding-top: 15%;">
+        <div class="row">
+            <form class="col-md-6 offset-3" [formGroup]="userLoginForm" (ngSubmit)="login(userLoginForm.value)">
+                <h1 class="text-center text-white">Login Form</h1>
+
+                <div class="form-group">
+                    <label class="text-white">Email :</label>
+                    <input type="email" class="form-control" formControlName="email"
+                        placeholder="Enter Quantity of the Product">
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Password :</label>
+                    <input type="text" class="form-control" formControlName="password"
+                        placeholder="Enter Product Description">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; opacity: 1;" [disabled]="!userLoginForm.valid">Login</button>
+            </form>
+        </div>
+
     </div>
+
+</div>

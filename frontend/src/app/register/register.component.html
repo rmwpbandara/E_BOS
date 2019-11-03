@@ -1,40 +1,51 @@
-<div class="container">
+<app-guest-header></app-guest-header>
+<div
+    style="background : url('../../assets/img/images.jpg'); object-fit:cover ; min-height:100vh; background-repeat: no-repeat; background-attachment: fixed;">
 
-    <form [formGroup]="userRegisterForm" (ngSubmit)="register(userRegisterForm.value)">
+    <div class="container" style="padding-top: 5%;">
+        <div class="row">
+            <form class="col-md-6 offset-3" [formGroup]="userRegisterForm"
+                (ngSubmit)="register(userRegisterForm.value)">
 
-        <div class="form-group">
-            <h2>User Register</h2>
-            <label>User Name :</label>
-            <input type="text" class="form-control" formControlName="name" placeholder="Enter Product Name">
+                <h1 class="text-center text-white">Register Form</h1>
 
+                <div class="form-group">
+                    <label class="text-white">User Name :</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="Enter Product Name">
+
+                </div>
+                <div class="form-group">
+                    <label class="text-white">location :</label>
+                    <input type="text" class="form-control" formControlName="location"
+                        placeholder="Enter location of the Product">
+                </div>
+
+                <div class="form-group">
+                    <label class="text-white">contact :</label>
+                    <input type="text" class="form-control" formControlName="contact"
+                        placeholder="Enter Weight of the Product">
+                </div>
+
+                <div class="form-group">
+                    <label class="text-white">email :</label>
+                    <input type="email" class="form-control" formControlName="email"
+                        placeholder="Enter Quantity of the Product">
+                </div>
+
+                <div class="form-group">
+                    <label class="text-white">password :</label>
+                    <input type="text" class="form-control" formControlName="password"
+                        placeholder="Enter Product Description">
+
+                </div>
+                <div class="form-group">
+                    <label class="text-white">repeatpassword :</label>
+                    <input type="text" class="form-control" formControlName="repeatpassword"
+                        placeholder="Enter Product Description">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; opacity: 1;"
+                    [disabled]="!userRegisterForm.valid">Register</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label>location :</label>
-            <input type="text" class="form-control" formControlName="location"
-                placeholder="Enter location of the Product">
-        </div>
-
-        <div class="form-group">
-            <label>contact :</label>
-            <input type="text" class="form-control" formControlName="contact" placeholder="Enter Weight of the Product">
-        </div>
-
-        <div class="form-group">
-            <label>email :</label>
-            <input type="email" class="form-control" formControlName="email"
-                placeholder="Enter Quantity of the Product">
-        </div>
-
-        <div class="form-group">
-            <label>password :</label>
-            <input type="text" class="form-control" formControlName="password" placeholder="Enter Product Description">
-
-        </div>
-        <div class="form-group">
-            <label>repeatpassword :</label>
-            <input type="text" class="form-control" formControlName="repeatpassword"
-                placeholder="Enter Product Description">
-        </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!userRegisterForm.valid">Register</button>
-    </form>
+    </div>
 </div>

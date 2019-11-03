@@ -14,9 +14,9 @@ export class UserViewComponent implements OnInit {
 
   ngOnInit() : void{
     this.searchForm = new FormGroup({
-      search_keyword: new FormControl(''),
+      product_name: new FormControl(''),
       price_range: new FormControl(''),
-      manufacture: new FormControl(''),
+      manufacture_id: new FormControl(''),
     });
   }
 
