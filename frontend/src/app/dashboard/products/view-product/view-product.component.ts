@@ -16,7 +16,15 @@ export class ViewProductComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router) {
     
     this.productService.viewProducts().subscribe(res => {
-      this.products = JSON.parse(res['_body']);
+      let user = JSON.parse(localStorage.getItem('user'));
+      let products = JSON.parse(res['_body']);
+
+      products.forEach( (myObject, index) => {
+        if(myObject.seller_id == user.id){
+          console.log(myObject);
+          this.products.push(myObject);
+        }
+      });
     })
   }
 
