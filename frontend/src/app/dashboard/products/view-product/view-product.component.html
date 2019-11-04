@@ -19,7 +19,7 @@
             <td>{{ product.price }}</td>
             <td>{{ product.quantity }}</td>
             <td>{{ product.description }}</td>
-            <td>{{ product.image_url }}</td>
+            <td><img src="{{product.image_url}}" style="height: 40px; width: 50px;"></td>
 
             <td><a (click)="editProduct(product.id)" class="btn btn-warning btn-sm">Edit</a></td>
             <td><a (click)="deleteProduct(product.id)" class="btn btn-danger btn-sm">Delete</a></td>

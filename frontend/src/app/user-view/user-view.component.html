@@ -73,12 +73,12 @@
         <div class="content">
             <div class="results">
                 <div class="results">
-                    <div *ngFor="let product of products">
+                    <div *ngFor="let product of products; let i = index ">
                         <div class="content-wrapper mb-3">
-                            <img class="result-content-image"
-                                src="https://homepages.cae.wisc.edu/~ece533/images/fruits.png">
+                            <img class="result-content-image" src="{{product.image_url}}">
                             <h6 class="result-content-title pt-2"> {{ product.name }} </h6>
                             <p class="result-content-description"> Product Price : {{ product.price }}/- </p>
+                            <p class="result-content-description"> Product Quantity : {{ product.quantity }} </p>
                             <button class="btn btn-success add-to-cart-btn" (click)="addToCart(product)">Add to
                                 Cart</button>
                         </div>

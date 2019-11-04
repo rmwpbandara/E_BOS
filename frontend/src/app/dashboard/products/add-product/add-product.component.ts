@@ -35,6 +35,16 @@ export class AddProductComponent implements OnInit {
 
   }
   addProduct(form_data) {
+
+
+
+    let image_url = form_data['image_url'];
+
+    let image_url_new = image_url.replace("C:\\fakepath\\","../../assets/img/");    
+
+    form_data['image_url'] = image_url_new;
+
+    
     form_data['seller_id'] = this.seller_id;
 
     this.productService.addProduct(form_data).subscribe(res => {

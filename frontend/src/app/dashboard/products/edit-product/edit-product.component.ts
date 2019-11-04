@@ -40,6 +40,12 @@ export class EditProductComponent implements OnInit {
     form_data['id'] = this.product_data['id'];
     form_data['seller_id'] = this.seller_id;
 
+    let image_url = form_data['image_url'];
+
+    let image_url_new = image_url.replace("C:\\fakepath\\","../../assets/img/");    
+
+    form_data['image_url'] = image_url_new;
+
     this.productService.updateProduct(form_data).subscribe(res => {
       if (res['ok']) {
         Swal.fire({

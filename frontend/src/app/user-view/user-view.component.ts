@@ -19,7 +19,8 @@ export class UserViewComponent implements OnInit {
   constructor(fb: FormBuilder, private productServiceObject: ProductService, private userService : UserService , private router: Router) { 
     this.search_data = JSON.parse(localStorage.getItem('search_data'));
 
-    this.userService.getUser().subscribe(res=>{
+    this.userService.getUser()
+    .subscribe(res=>{
       let user_data =JSON.parse(res['_body']);
       this.user_data = user_data;
     });
@@ -36,15 +37,17 @@ export class UserViewComponent implements OnInit {
           i++;
         }
       });
-    } 
-    else {
+    } else {
+      // searched data in the local storage
     this.productServiceObject.viewProducts().subscribe(res=>{
       let data =JSON.parse(res['_body']);
       data.forEach( (myObject, index) => {
 
-        let search_data_min_price =  parseInt(this.search_data.min_price);
+
+        let search_data_min_price =  parseInt(this.search_data.min_price); //parseInt=> convert local storage to integer
         let search_data_max_price =  parseInt(this.search_data.max_price);
         let search_data_manufacture_id =  parseInt(this.search_data.manufacture_id);
+        
         let product_price = myObject.price;
         let product_manufacture_id = myObject.seller_id;
         
