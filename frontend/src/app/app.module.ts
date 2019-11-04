@@ -9,7 +9,6 @@ import bootstrap from "bootstrap";
 import { GuestHeaderComponent } from './component/guest-header/guest-header.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { RouterModule } from '@angular/router';
-import { SearchResultComponent } from './search-result/search-result.component';
 import { SharedModuleModule } from './shared-module/shared-module.module';
 import { HttpModule } from '@angular/http';
 import { ManufacturerProfileComponent } from './manufacturer-profile/manufacturer-profile.component';
@@ -24,7 +23,6 @@ import { CommonService } from './_service/common.service';
     RegisterComponent,
     GuestHeaderComponent,
     UserViewComponent,
-    SearchResultComponent,
     ManufacturerProfileComponent
   ],
   imports: [
