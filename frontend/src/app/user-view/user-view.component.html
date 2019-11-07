@@ -15,6 +15,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                 <select class="form-control search-slt" formControlName="min_price">
                                     <option value="0">Min Price is Zero</option>
+                                    <option value="100">50</option>
                                     <option value="100">100</option>
                                     <option value="200">200</option>
                                     <option value="300">300</option>
@@ -35,6 +36,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                 <select class="form-control search-slt" formControlName="max_price">
                                     <option value="1000000">Max Price</option>
+                                    <option value="100">50</option>
                                     <option value="100">100</option>
                                     <option value="200">200</option>
                                     <option value="300">300</option>
@@ -79,6 +81,7 @@
                             <h6 class="result-content-title pt-2"> {{ product.name }} </h6>
                             <p class="result-content-description"> Product Price : {{ product.price }}/- </p>
                             <p class="result-content-description"> Product Quantity : {{ product.quantity }} </p>
+                            <p class="result-content-description"> Description : {{  product.description }} </p>
                             <button class="btn btn-success add-to-cart-btn" (click)="addToCart(product)">Add to
                                 Cart</button>
                         </div>
