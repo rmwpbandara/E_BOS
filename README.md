@@ -10,6 +10,6 @@ git clone https://github.com/rmwpbandara/E_BOS
 
 open backend in intellij and set application.java as a main class and run
 
-open frontend from another ide and <code>run ng serve</code>
+open frontend from another ide and run <code>ng serve</code>
 
 
