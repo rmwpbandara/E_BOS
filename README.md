@@ -2,11 +2,13 @@ open terminal
 
 use these command
 
-git clone https://github.com/rmwpbandara/E_BOS
+<code>git clone https://github.com/rmwpbandara/E_BOS</code>
 
 <code>cd frontend</code>
 
 <code>npm install</code>
+
+create database name as "ebos"
 
 open backend in intellij and set application.java as a main class and run
 
