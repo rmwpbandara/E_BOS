@@ -4,12 +4,12 @@ use these command
 
 git clone https://github.com/rmwpbandara/E_BOS
 
-cd frontend
+<code>cd frontend</code>
 
-npm install
+<code>npm install</code>
 
 open backend in intellij and set application.java as a main class and run
 
-open frontend from another ide and run ng serve
+open frontend from another ide and <code>run ng serve</code>
 
 
