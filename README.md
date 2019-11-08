@@ -8,7 +8,7 @@ use these command
 
 <code>npm install</code>
 
-create database name as "ebos"
+create a database name as "ebos"
 
 open backend in intellij and set application.java as a main class and run
 
