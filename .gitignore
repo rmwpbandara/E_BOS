@@ -51,3 +51,6 @@ backend/.idea/workspace.xml
 backend/target/
 backend/target/classes/META-INF/backend.kotlin_module
 backend/backend.iml
+global-groovy.log
+soapui-errors.log
+soapui.log
