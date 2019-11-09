@@ -15,6 +15,7 @@ export class UserViewComponent implements OnInit {
   products = [];
   user_data;
   search_data;
+  cart_products = [];
   
   constructor(fb: FormBuilder, private productServiceObject: ProductService, private userService : UserService , private router: Router) { 
     this.search_data = JSON.parse(localStorage.getItem('search_data'));
@@ -72,11 +73,13 @@ export class UserViewComponent implements OnInit {
 
   ngOnInit() : void{
 
+    let search_data_product_name = '';
     let search_data_min_price = 0;
     let search_data_max_price = 1000000;
     let search_data_manufacture_id = '';
 
     if(this.search_data){
+      search_data_product_name = this.search_data.product_name;
       search_data_min_price = this.search_data.min_price;
       search_data_max_price = this.search_data.max_price;
       search_data_manufacture_id = this.search_data.manufacture_id;
@@ -84,6 +87,7 @@ export class UserViewComponent implements OnInit {
     }
 
     this.searchForm = new FormGroup({
+      product_name: new FormControl(search_data_product_name),
       min_price: new FormControl(search_data_min_price),
       max_price: new FormControl(search_data_max_price),
       manufacture_id: new FormControl(search_data_manufacture_id),
@@ -97,6 +101,18 @@ export class UserViewComponent implements OnInit {
   }
 
   addToCart(product){
-    alert("add to cart works !")
+
+    localStorage.removeItem('cart_products');
+    localStorage.setItem('cart_products',JSON.stringify(product));
+
+    let current_product_data = JSON.parse(localStorage.getItem('cart_products'));
+
+    this.cart_products.push(current_product_data);
+
+    console.log(this.cart_products);
+    
+
+
+    // location.reload();
   }
 }

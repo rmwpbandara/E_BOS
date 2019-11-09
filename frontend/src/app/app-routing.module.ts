@@ -4,12 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ManufacturerProfileComponent } from './manufacturer-profile/manufacturer-profile.component';
 import { AuthGuard } from './_gurds/auth.guard';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'manufacturer-profile', component: ManufacturerProfileComponent },
+  { path: 'cart', component: CartPageComponent },
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),

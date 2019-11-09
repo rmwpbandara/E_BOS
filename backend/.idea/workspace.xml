@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6c247625-30dd-4bfc-af56-4c1ddd6dda3b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EBOS/services/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EBOS/services/implementations/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EBOS/services/implementations/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/EBOS/services/implementations/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dashboard/products/view-product/view-product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/dashboard/products/view-product/view-product.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/user-view/user-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/user-view/user-view.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/img/abc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../soapui.log" beforeDir="false" afterPath="$PROJECT_DIR$/../soapui.log" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -77,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/EBOS/controllers/Product.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="17" selection-start-line="17" selection-end-line="18" />
+            <state relative-caret-position="178">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#562#563#0" expanded="true" />
@@ -353,12 +347,12 @@
       <workItem from="1572870453847" duration="8520000" />
       <workItem from="1573016586237" duration="699000" />
       <workItem from="1573017557697" duration="4902000" />
-      <workItem from="1573155020324" duration="1385000" />
+      <workItem from="1573155020324" duration="2711000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78653000" />
+    <option name="totallyTimeSpent" value="79979000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -374,7 +368,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46481177" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.46481177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -612,8 +606,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/EBOS/controllers/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" selection-start-line="17" selection-end-line="18" />
+        <state relative-caret-position="178">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#562#563#0" expanded="true" />

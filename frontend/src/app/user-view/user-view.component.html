@@ -8,11 +8,11 @@
                 <div class="row pt-5">
                     <div class="col-lg-12 mb-5">
                         <div class="row text-center">
-                            <!-- <div class="col-lg-4 col-md-5 col-sm-12 p-0">
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                 <input type="text" class="form-control search-slt" formControlName="product_name"
                                     placeholder="Type Product Name">
-                            </div> -->
-                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 p-0">
                                 <select class="form-control search-slt" formControlName="min_price">
                                     <option value="0">Min Price is Zero</option>
                                     <option value="50">50</option>
@@ -33,7 +33,7 @@
                                     <option value="1500">1500</option>
                                 </select>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <div class="col-lg-2 col-md-2 col-sm-12 p-0">
                                 <select class="form-control search-slt" formControlName="max_price">
                                     <option value="1000000">Max Price</option>
                                     <option value="50">50</option>
@@ -54,7 +54,7 @@
                                     <option value="1500">1500</option>
                                 </select>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 p-0">
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                 <select class="form-control search-slt" formControlName="manufacture_id">
                                     <option value="">Manufactures</option>
                                     <option *ngFor="let user of user_data" value="{{ user.id }}">

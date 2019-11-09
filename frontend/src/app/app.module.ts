@@ -15,6 +15,7 @@ import { ManufacturerProfileComponent } from './manufacturer-profile/manufacture
 import { AuthGuard } from './_gurds/auth.guard';
 import { UserService } from './_service/custom/user.service';
 import { CommonService } from './_service/common.service';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CommonService } from './_service/common.service';
     RegisterComponent,
     GuestHeaderComponent,
     UserViewComponent,
-    ManufacturerProfileComponent
+    ManufacturerProfileComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
