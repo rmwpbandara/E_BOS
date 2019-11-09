@@ -1,15 +1,19 @@
 package EBOS.models;
 import javax.persistence.*;
 
+
 @Entity
-@Table(name= "products")
-public class ProductModel {
+@Table(name= "orders")
+public class OrderModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
 
     @Column(name = "id")
     private Integer id;
+
+    @Column(name = "customer_email")
+    private String customer_email;
 
     @Column(name = "name")
     private String name;
@@ -20,18 +24,14 @@ public class ProductModel {
     @Column(name = "weight")
     private String weight;
 
-    @Column(name = "quantity")
-    private Integer quantity;
+    @Column(name = "order_status")
+    private String order_status;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "seller_notification_view")
+    private String seller_notification_view;
 
-    @Column(name = "image_url")
-    private String image_url;
-
-    @Column(name = "seller_id")
-    private Integer seller_id;
-
+    @Column(name = "customer_mail_send")
+    private String customer_mail_send;
 
     public Integer getId() {
         return id;
@@ -39,6 +39,14 @@ public class ProductModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCustomer_email() {
+        return customer_email;
+    }
+
+    public void setCustomer_email(String customer_email) {
+        this.customer_email = customer_email;
     }
 
     public String getName() {
@@ -96,4 +104,19 @@ public class ProductModel {
     public void setSeller_id(Integer seller_id) {
         this.seller_id = seller_id;
     }
+
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "image_url")
+    private String image_url;
+
+    @Column(name = "seller_id")
+    private Integer seller_id;
+
+
 }
+

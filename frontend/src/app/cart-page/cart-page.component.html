@@ -2,14 +2,22 @@
 <div style="background : url('../../assets/img/images.jpg'); object-fit:cover ; min-height:100vh; background-repeat: no-repeat; background-attachment: fixed;">
     <div class="container text-center text-white" style="padding-top: 60px;">
 
-
         <h1>Design your cart page here</h1>
+       
+        <form class="col-md-6 offset-3" [formGroup]="TestForm" (ngSubmit)="addOrder(TestForm.value)">
 
+            <input type="text" formControlName="test_text">
+            <br>
+            <br>
+            <input type="number" formControlName="test_number">
+            <br>
+            <br>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!TestForm.valid">Submit</button>
+        </form>
+        
 
-
-
-
-        <a href="#" class="btn btn-success" [routerLink]="['/order-receipt']">Place Order</a>
+        <!-- <a href="#" class="btn btn-success" [routerLink]="['/order-receipt']">Place Order</a> -->
 
     </div>
 </div>
