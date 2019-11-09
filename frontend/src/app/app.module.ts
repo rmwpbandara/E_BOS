@@ -16,6 +16,7 @@ import { AuthGuard } from './_gurds/auth.guard';
 import { UserService } from './_service/custom/user.service';
 import { CommonService } from './_service/common.service';
 import { CartPageComponent } from './cart-page/cart-page.component';
+import { OrderReceiptComponent } from './order-receipt/order-receipt.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CartPageComponent } from './cart-page/cart-page.component';
     GuestHeaderComponent,
     UserViewComponent,
     ManufacturerProfileComponent,
-    CartPageComponent
+    CartPageComponent,
+    OrderReceiptComponent
   ],
   imports: [
     BrowserModule,
