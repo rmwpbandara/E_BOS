@@ -49,3 +49,5 @@ testem.log
 Thumbs.db
 backend/.idea/workspace.xml
 backend/target/
+backend/target/classes/META-INF/backend.kotlin_module
+backend/backend.iml
