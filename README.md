@@ -4,8 +4,8 @@ use these command
 
 <code>git clone https://github.com/rmwpbandara/E_BOS</code>
 
+<code>cd e_bos </code>
 <code>cd frontend</code>
-
 <code>npm install</code>
 
 create a database name as "ebos"
