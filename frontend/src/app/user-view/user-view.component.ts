@@ -28,7 +28,7 @@ export class UserViewComponent implements OnInit {
 
 
     
-    if( (!this.search_data) || ( this.search_data['min_price'] == "" && this.search_data['max_price'] == "" && this.search_data['manufacture_id'] == "") ){
+    if( (!this.search_data) || ( this.search_data['min_price'] == "" && this.search_data['max_price'] == "" && this.search_data['manufacture_id'] == "" && this.search_data['product_name'] == "") ){
       this.productServiceObject.viewProducts().subscribe(res=>{
         let data =JSON.parse(res['_body']);
         let i = 1
@@ -39,33 +39,134 @@ export class UserViewComponent implements OnInit {
         }
       });
     } else {
+
+      // console.log(this.search_data);
+
       // searched data in the local storage
     this.productServiceObject.viewProducts().subscribe(res=>{
       let data =JSON.parse(res['_body']);
       data.forEach( (myObject, index) => {
 
-
+        let search_data_product_name =  this.search_data.product_name.toLowerCase();
         let search_data_min_price =  parseInt(this.search_data.min_price); //parseInt=> convert local storage to integer
         let search_data_max_price =  parseInt(this.search_data.max_price);
         let search_data_manufacture_id =  parseInt(this.search_data.manufacture_id);
         
+        let product_name = myObject.name.toLowerCase();
         let product_price = myObject.price;
         let product_manufacture_id = myObject.seller_id;
         
-        console.log(search_data_max_price);
-        console.log(product_price);
-        
-        if(search_data_manufacture_id){
-          if( search_data_min_price  <= product_price && product_price <= search_data_max_price && search_data_manufacture_id == product_manufacture_id){
+        let max = search_data_max_price >= product_price;
+        let min = search_data_min_price <= product_price;
+        let seller = search_data_manufacture_id == product_manufacture_id;
+        let name = product_name.indexOf(search_data_product_name) > -1;
+
+        // search_data_product_name //search_data_manufacture_id //search_data_min_price // search_data_max_price
+        // 0 0 0 1
+        if(!search_data_product_name && !search_data_manufacture_id && !search_data_min_price && search_data_max_price){
+          if(max){
             this.products.push(myObject);
           }
-        } else if( search_data_min_price  <= product_price  && product_price <= search_data_max_price){
-          this.products.push(myObject);
-        } else {
-          // this.products.push(myObject);
         }
 
+        // 0 0 1 0
+        if(!search_data_product_name && !search_data_manufacture_id && search_data_min_price && !search_data_max_price){
+          if(min){
+            this.products.push(myObject);
+          }
+        }
 
+        // 0 0 1 1
+        if(!search_data_product_name && !search_data_manufacture_id && search_data_min_price && search_data_max_price){
+          if(min && max){
+            this.products.push(myObject);
+          }
+        }
+
+        // 0 1 0 0
+        if(!search_data_product_name && search_data_manufacture_id && !search_data_min_price && !search_data_max_price){
+          if(seller){
+            this.products.push(myObject);
+          }
+        }
+
+        // 0 1 0 1
+        if(!search_data_product_name && search_data_manufacture_id && !search_data_min_price && search_data_max_price){
+          if(seller && max){
+            this.products.push(myObject);
+          }
+        }
+
+        // 0 1 1 0
+        if(!search_data_product_name && search_data_manufacture_id && search_data_min_price && !search_data_max_price){
+          if(seller && min){
+            this.products.push(myObject);
+          }
+        }
+        
+        // 0 1 1 1
+        if(!search_data_product_name && search_data_manufacture_id && search_data_min_price && search_data_max_price){
+          if(seller && min && max){
+            this.products.push(myObject);
+          }
+        }
+
+        // 1 0 0 0
+        if(search_data_product_name && !search_data_manufacture_id && !search_data_min_price && !search_data_max_price){
+          if(name){
+            this.products.push(myObject);
+          }
+        }
+
+        // 1 0 0 1
+        if(search_data_product_name && !search_data_manufacture_id && !search_data_min_price && search_data_max_price){
+          if(name && max){
+            this.products.push(myObject);
+          }
+        }
+
+        // 1 0 1 0
+        if(search_data_product_name && !search_data_manufacture_id && search_data_min_price && !search_data_max_price){
+          if(name && min){
+            this.products.push(myObject);
+          }
+        }
+
+        // 1 0 1 1
+        if(search_data_product_name && !search_data_manufacture_id && search_data_min_price && search_data_max_price){
+          if(name && min && max){
+            this.products.push(myObject);
+          }
+        }
+
+        // 1 1 0 0
+        if(search_data_product_name && search_data_manufacture_id && !search_data_min_price && !search_data_max_price){
+          if(name && seller){
+            this.products.push(myObject);
+          }
+        }
+
+        // 1 1 0 1
+        if(search_data_product_name && search_data_manufacture_id && !search_data_min_price && search_data_max_price){
+          if(name && seller && max){
+            this.products.push(myObject);
+          }
+        }
+
+        // 1 1 1 0
+        if(search_data_product_name && search_data_manufacture_id && search_data_min_price && !search_data_max_price){
+          if(name && seller && min){
+            this.products.push(myObject);
+          }
+        }
+
+        // 1 1 1 1
+        if(search_data_product_name && search_data_manufacture_id && search_data_min_price && search_data_max_price){
+          if(name && seller && min && max){
+            this.products.push(myObject);
+          }
+        }
+        
       });
     });
     }
@@ -74,8 +175,8 @@ export class UserViewComponent implements OnInit {
   ngOnInit() : void{
 
     let search_data_product_name = '';
-    let search_data_min_price = 0;
-    let search_data_max_price = 1000000;
+    let search_data_min_price = '';
+    let search_data_max_price = '';
     let search_data_manufacture_id = '';
 
     if(this.search_data){
