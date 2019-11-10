@@ -39,21 +39,37 @@ export class ViewProductComponent implements OnInit {
   }
 
   deleteProduct(product_id){
-    this.productService.deleteProduct(product_id).subscribe(res => {
 
-      if (res['ok']) {
-        Swal.fire({
-          position: 'top-end',
-          type: 'success',
-          title: 'Product Delete Successfully !',
-          showConfirmButton: false,
-          timer: 3000
+    
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).
+    
+    then((result) => {
+      if (result.value) {
+        this.productService.deleteProduct(product_id).subscribe(res => {
+          if (res['ok']) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            );
+            location.reload();
+            this.router.navigate(['/dashboard/products-view']);
+          }
         });
-        location.reload();
-        this.router.navigate(['/dashboard/products-view']);
+        
         
       }
     });
+
+
+  
 
   }
 
