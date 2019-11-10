@@ -9,7 +9,7 @@
 
                 <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['email'].valid && (userForm.get('email').touched || submitted)}">
                     <label class="text-white" for="email"><b>Email</b></label>
-                    <input class="form-control" type="text" placeholder="Enter Email" formControlName="email" name="email" required>
+                    <input class="form-control" type="email" placeholder="Enter Email" formControlName="email" name="email" required>
                     <div *ngIf="userForm.get('email').touched || submitted" style='color:red;'>
                         <div *ngIf="userForm.get('email').hasError('required')">Email is required</div> 
                         <div *ngIf="!userForm.get('email').hasError('required') && userForm.hasError('email', 'email')">Email is invalid</div>
