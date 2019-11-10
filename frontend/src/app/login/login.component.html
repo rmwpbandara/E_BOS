@@ -4,20 +4,30 @@
 
     <div class="container" style="padding-top: 15%;">
         <div class="row">
-            <form class="col-md-6 offset-3" [formGroup]="userLoginForm" (ngSubmit)="login(userLoginForm.value)">
+            <form class="col-md-6 offset-3" [formGroup]="userForm" (ngSubmit)="login(userForm.value)">
                 <h1 class="text-center text-white">Login Form</h1>
 
-                <div class="form-group">
-                    <label class="text-white">Email :</label>
-                    <input type="email" class="form-control" formControlName="email"
-                        placeholder="Enter Quantity of the Product">
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['email'].valid && (userForm.get('email').touched || submitted)}">
+                    <label class="text-white" for="email"><b>Email</b></label>
+                    <input class="form-control" type="text" placeholder="Enter Email" formControlName="email" name="email" required>
+                    <div *ngIf="userForm.get('email').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('email').hasError('required')">Email is required</div> 
+                        <div *ngIf="!userForm.get('email').hasError('required') && userForm.hasError('email', 'email')">Email is invalid</div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="text-white">Password :</label>
-                    <input type="password" class="form-control" formControlName="password"
-                        placeholder="Enter Product Description">
+
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['password'].valid && (userForm.get('password').touched || submitted)}">
+                    <label class="text-white" for="psw"><b>Password</b></label>
+                    <input class="form-control" type="password" placeholder="Enter Password" #id formControlName="password" name="password" required>
+                    <div *ngIf="userForm.get('password').touched || submitted" style='color:red'>
+                        <label *ngIf="userForm.get('password').hasError('required')">Password is required</label>
+                        <label *ngIf="!userForm.get('password').hasError('required') && id.value.length<3">Please enter more than 4</label>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; opacity: 1;" [disabled]="!userLoginForm.valid">Login</button>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; opacity: 1;" [disabled]="!userForm.valid">Login</button>
+                </div>
             </form>
         </div>
 

@@ -4,47 +4,68 @@
 
     <div class="container" style="padding-top: 5%;">
         <div class="row">
-            <form class="col-md-6 offset-3" [formGroup]="userRegisterForm"
-                (ngSubmit)="register(userRegisterForm.value)">
+            <form class="col-md-6 offset-3" [formGroup]="userForm"
+                (ngSubmit)="register(userForm.value)">
 
                 <h1 class="text-center text-white">Register Form</h1>
 
-                <div class="form-group">
-                    <label class="text-white">User Name :</label>
-                    <input type="text" class="form-control" formControlName="name" placeholder="Enter Product Name">
-
-                </div>
-                <div class="form-group">
-                    <label class="text-white">location :</label>
-                    <input type="text" class="form-control" formControlName="location"
-                        placeholder="Enter location of the Product">
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['name'].valid && (userForm.get('name').touched || submitted)}">
+                    <label class="text-white" for="name"><b>User Name :</b></label>
+                    <input class="form-control" type="text" placeholder="Enter name" formControlName="name" name="name" required>
+                    <div *ngIf="userForm.get('name').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('name').hasError('required')">Name is required</div> 
+                        <div *ngIf="!userForm.get('name').hasError('required') && userForm.hasError('name', 'name')">Name is invalid</div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="text-white">contact :</label>
-                    <input type="text" class="form-control" formControlName="contact"
-                        placeholder="Enter Weight of the Product">
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['location'].valid && (userForm.get('location').touched || submitted)}">
+                    <label class="text-white" for="location"><b>Location</b></label>
+                    <input class="form-control" type="text" placeholder="Enter location" formControlName="location" name="location" required>
+                    <div *ngIf="userForm.get('location').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('location').hasError('required')">Location is required</div> 
+                        <div *ngIf="!userForm.get('location').hasError('required') && userForm.hasError('location', 'location')">Location is invalid</div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="text-white">email :</label>
-                    <input type="email" class="form-control" formControlName="email"
-                        placeholder="Enter Quantity of the Product">
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['contact'].valid && (userForm.get('contact').touched || submitted)}">
+                    <label class="text-white" for="contact"><b>Contact</b></label>
+                    <input class="form-control" type="text" placeholder="Enter contact" formControlName="contact" name="contact" required>
+                    <div *ngIf="userForm.get('contact').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('contact').hasError('required')">Contact is required</div> 
+                        <div *ngIf="!userForm.get('contact').hasError('required') && userForm.hasError('contact', 'contact')">Contact is invalid</div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="text-white">password :</label>
-                    <input type="password" class="form-control" formControlName="password"
-                        placeholder="Enter Product Description">
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['email'].valid && (userForm.get('email').touched || submitted)}">
+                    <label class="text-white" for="email"><b>Email</b></label>
+                    <input class="form-control" type="email" placeholder="Enter email" formControlName="email" name="email" required>
+                    <div *ngIf="userForm.get('email').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('email').hasError('required')">Email is required</div> 
+                        <div *ngIf="!userForm.get('email').hasError('required') && userForm.hasError('email', 'email')">Email is invalid</div>
+                    </div>
+                </div>
 
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['password'].valid && (userForm.get('password').touched || submitted)}">
+                    <label class="text-white" for="psw"><b>Password</b></label>
+                    <input class="form-control" type="password" placeholder="Enter Password" #id formControlName="password" name="password" required>
+                    <div *ngIf="userForm.get('password').touched || submitted" style='color:red'>
+                        <label *ngIf="userForm.get('password').hasError('required')">Password is required</label>
+                        <label *ngIf="!userForm.get('password').hasError('required') && id.value.length<3">Please enter more than 4</label>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="text-white">repeat password :</label>
-                    <input type="password" class="form-control" formControlName="repeatpassword"
-                        placeholder="Enter Product Description">
+
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['repeatpassword'].valid && (userForm.get('repeatpassword').touched || submitted)}">
+                    <label class="text-white" for="psw"><b>Repeat Password</b></label>
+                    <input class="form-control" type="password" placeholder="Enter repeatpassword" #id formControlName="repeatpassword" name="repeatpassword" required>
+                    <div *ngIf="userForm.get('repeatpassword').touched || submitted" style='color:red'>
+                        <label *ngIf="userForm.get('repeatpassword').hasError('required')">Repeat password is required</label>
+                        <label *ngIf="!userForm.get('repeatpassword').hasError('required') && id.value.length<3">Please enter more than 4</label>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; opacity: 1;"
-                    [disabled]="!userRegisterForm.valid">Register</button>
+
+               
+                <button type="submit" class="btn btn-primary mb-5" style="width: 100%; opacity: 1;"
+                    [disabled]="!userForm.valid">Register</button>
             </form>
         </div>
     </div>

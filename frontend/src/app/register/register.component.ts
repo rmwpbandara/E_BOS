@@ -14,18 +14,17 @@ export class RegisterComponent implements OnInit {
   // name location contact email password repeatpassword
 
 
-  userRegisterForm: FormGroup;
+  userForm: FormGroup;
 
   constructor(fb: FormBuilder, private userService: UserService, private router: Router) {
 
-    
-    this.userRegisterForm = fb.group({
-      name: [null, Validators.required],
-      location: [null, Validators.required],
-      contact: [null, Validators.required],
-      email: [null, Validators.required],
-      password: [null, Validators.required],
-      repeatpassword: [null, Validators.required]
+    this.userForm = fb.group({
+      name: ['', Validators.compose([Validators.required])],
+      location: ['', Validators.compose([Validators.required])],
+      contact: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.email, Validators.required])],
+      password: [null, Validators.compose([Validators.required, Validators.minLength(4)])],
+      repeatpassword: [null, Validators.compose([Validators.required, Validators.minLength(4)])]
     });
   }
 
