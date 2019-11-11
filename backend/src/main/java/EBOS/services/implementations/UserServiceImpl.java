@@ -42,14 +42,14 @@ public class UserServiceImpl implements UserServices {
     }
 
     @Override
-    public String updateUser(UserModel newUserData) {
-        String msg = null;
+    public UserModel updateUser(UserModel newUserData) {
         if(newUserData.getId() != null) {
-            userRepository.save(newUserData);
-            msg = "Data updated";
-        }else {
-            msg = "Error";
+            
+            UserModel user = userRepository.save(newUserData);
+            user.setPassword("null");
+            return user;
+        } else {
+            return new UserModel();
         }
-        return msg;
     }
 }

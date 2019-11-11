@@ -40,15 +40,21 @@ export class ProfileSettingsComponent implements OnInit {
 
     this.userService.updateUser(user).subscribe(res=>{
 
-      localStorage.setItem('user',res['_body']);
+      let res_data = JSON.parse(res['_body']);
       
-      Swal.fire({
-        position: 'top-end',
-        type: 'success',
-        title: 'User Updated Successfully !',
-        showConfirmButton: false,
-        timer: 2000
-      });
+      if(res_data['id'] != null){
+        localStorage.setItem('user',res['_body']);
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'User Updated Successfully !',
+          showConfirmButton: false,
+          timer: 2000
+        });
+
+        location.reload();
+        this.router.navigate(['/dashboard/profile-settings']);
+      }
 
     });
 

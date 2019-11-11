@@ -34,7 +34,7 @@ public class User {
 
     @CrossOrigin(origins = "*")
     @PutMapping ("/update")
-    public String updateUser(@RequestBody UserModel newUserData) {
+    public UserModel updateUser(@RequestBody UserModel newUserData) {
         return userServices.updateUser(newUserData);
     }
 }

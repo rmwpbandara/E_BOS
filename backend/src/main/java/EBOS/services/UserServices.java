@@ -9,6 +9,6 @@ public interface UserServices {
     List<UserModel> findAllUsers();
     String registerUser(UserModel userData);
     UserModel loginUser(UserModel userData);
-    String updateUser(UserModel newUserData);
+    UserModel updateUser(UserModel newUserData);
 
 }
