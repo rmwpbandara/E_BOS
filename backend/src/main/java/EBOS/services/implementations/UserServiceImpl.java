@@ -39,7 +39,17 @@ public class UserServiceImpl implements UserServices {
         } else {
             return userData;
         }
+    }
 
-
+    @Override
+    public String updateUser(UserModel newUserData) {
+        String msg = null;
+        if(newUserData.getId() != null) {
+            userRepository.save(newUserData);
+            msg = "Data updated";
+        }else {
+            msg = "Error";
+        }
+        return msg;
     }
 }

@@ -7,7 +7,8 @@ import java.util.List;
 public interface UserServices {
 
     List<UserModel> findAllUsers();
-
     String registerUser(UserModel userData);
     UserModel loginUser(UserModel userData);
+    String updateUser(UserModel newUserData);
+
 }

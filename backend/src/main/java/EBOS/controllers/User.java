@@ -32,5 +32,9 @@ public class User {
         return userServices.loginUser(userData);
     }
 
-
+    @CrossOrigin(origins = "*")
+    @PutMapping ("/update")
+    public String updateUser(@RequestBody UserModel newUserData) {
+        return userServices.updateUser(newUserData);
+    }
 }
