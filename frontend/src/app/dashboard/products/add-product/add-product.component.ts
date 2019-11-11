@@ -18,17 +18,13 @@ export class AddProductComponent implements OnInit {
     let data = JSON.parse(localStorage.getItem('user'));
     this.seller_id = data['id'];
     this.productAddForm = fb.group({
-      name: [null, Validators.required],
-      price: [null, Validators.required],
-      weight: [null, Validators.required],
-      quantity: [null, Validators.required],
-      description: [null, Validators.required],
-      image_url: [null, Validators.required],
-      // email: ['', Validators.compose([Validators.email, Validators.required])],
-      // password: [null, Validators.compose([Validators.required, Validators.minLength(8)])],
-      // repeatpassword: [null, Validators.compose([Validators.required, Validators.minLength(8)])]
+      name: ['', Validators.compose([Validators.required])],
+      price: ['', Validators.compose([Validators.required])],
+      weight: ['', Validators.compose([Validators.required])],
+      quantity: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])],
+      image_url: ['', Validators.compose([Validators.required])],
     });
-    
   }
 
   ngOnInit() {

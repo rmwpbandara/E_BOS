@@ -1,37 +1,51 @@
-
 <form [formGroup]="productEditForm" (ngSubmit)="updateProduct(productEditForm.value)">
-        <div class="form-group">
-            <h2>Edit Products</h2>
-            <label >Product Name :</label>
-            <input type="text" class="form-control" formControlName="name" placeholder="Enter Product Name">
-            
+    <div class="form-group" [ngClass]="{'has-danger':!productEditForm.controls['name'].valid && (productEditForm.get('name').touched || submitted)}">
+        <h2>Update Products</h2>
+        <label for="name"><b>Product Name :</b></label>
+        <input class="form-control" type="text" placeholder="Enter Product Name" formControlName="name" name="name" required>
+        <div *ngIf="productEditForm.get('name').touched || submitted" style='color:red;'>
+            <div *ngIf="productEditForm.get('name').hasError('required')">Product Name is required</div> 
         </div>
-        <div class="form-group">
-            <label>Price :</label>
-            <input type="text" class="form-control" formControlName="price" placeholder="Enter Price of the Product">
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger':!productEditForm.controls['price'].valid && (productEditForm.get('price').touched || submitted)}">
+        <label for="price"><b>Price :</b></label>
+        <input class="form-control" type="number" placeholder="Enter Price of the Product" formControlName="price" name="price" required>
+        <div *ngIf="productEditForm.get('price').touched || submitted" style='color:red;'>
+            <div *ngIf="productEditForm.get('price').hasError('required')">Price is required</div> 
         </div>
-    
-        <div class="form-group">
-            <label>Weight :</label>
-            <input type="text" class="form-control" formControlName="weight" placeholder="Enter Weight of the Product">
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger':!productEditForm.controls['quantity'].valid && (productEditForm.get('quantity').touched || submitted)}">
+        <label for="quantity"><b>Quantity :</b></label>
+        <input class="form-control" type="number" placeholder="Enter Quantity of the Product" formControlName="quantity" name="quantity" required>
+        <div *ngIf="productEditForm.get('quantity').touched || submitted" style='color:red;'>
+            <div *ngIf="productEditForm.get('quantity').hasError('required')">Quantity is required</div> 
         </div>
-    
-        <div class="form-group">
-            <label>Quantity :</label>
-            <input type="number" class="form-control" formControlName="quantity" placeholder="Enter Quantity of the Product">
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger':!productEditForm.controls['weight'].valid && (productEditForm.get('weight').touched || submitted)}">
+        <label for="weight"><b>Weight :</b></label>
+        <input class="form-control" type="text" placeholder="Enter weight of the Product" formControlName="weight" name="weight" required>
+        <div *ngIf="productEditForm.get('weight').touched || submitted" style='color:red;'>
+            <div *ngIf="productEditForm.get('weight').hasError('required')">Weight is required</div> 
         </div>
-    
-        <div class="form-group">
-            <label >Product Description :</label>
-            <input type="text" class="form-control" formControlName="description" placeholder="Enter Product Description">
-            
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger':!productEditForm.controls['description'].valid && (productEditForm.get('description').touched || submitted)}">
+        <label for="description"><b>Product Description  :</b></label>
+        <input class="form-control" type="text" placeholder="Enter Product Description " formControlName="description" name="description" required>
+        <div *ngIf="productEditForm.get('description').touched || submitted" style='color:red;'>
+            <div *ngIf="productEditForm.get('description').hasError('required')">Product Description  is required</div> 
         </div>
-    
-        <div class="form-group">
-            <label >Product Image :</label>
-            <input type="file" class="form-control" formControlName="image_url">
-           
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger':!productEditForm.controls['image_url'].valid && (productEditForm.get('image_url').touched || submitted)}">
+        <label for="image_url"><b>Product Image :</b></label>
+        <input class="form-control" type="file" formControlName="image_url" required>
+        <div *ngIf="productEditForm.get('image_url').touched || submitted" style='color:red;'>
+            <div *ngIf="productEditForm.get('image_url').hasError('required')">Product Image is required</div> 
         </div>
-        
-        <button type="Update" class="btn btn-primary" [disabled]="!productEditForm.valid">Update</button>
-    </form>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!productEditForm.valid">Submit</button>
+</form>

@@ -26,7 +26,7 @@ export class EditProductComponent implements OnInit {
       weight: [this.product_data['weight'], Validators.required],
       quantity: [this.product_data['quantity'], Validators.required],
       description: [this.product_data['description'], Validators.required],
-      image_url: [null, Validators.required]
+      image_url: [this.product_data['image_url'], Validators.required]
     });
 
     let data = JSON.parse(localStorage.getItem('user'));
