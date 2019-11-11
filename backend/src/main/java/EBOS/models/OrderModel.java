@@ -12,17 +12,17 @@ public class OrderModel {
     @Column(name = "id")
     private Integer id;
 
+    @Column(name = "customer_name")
+    private String name;
+
     @Column(name = "customer_email")
     private String customer_email;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "customer_address")
+    private String customer_address;
 
-    @Column(name = "price")
-    private double price;
-
-    @Column(name = "weight")
-    private String weight;
+    @Column(name = "customer_contact")
+    private String customer_contact;
 
     @Column(name = "order_status")
     private String order_status;
@@ -33,20 +33,15 @@ public class OrderModel {
     @Column(name = "customer_mail_send")
     private String customer_mail_send;
 
+    @Column(name = "seller_id")
+    private Integer seller_id;
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getCustomer_email() {
-        return customer_email;
-    }
-
-    public void setCustomer_email(String customer_email) {
-        this.customer_email = customer_email;
     }
 
     public String getName() {
@@ -57,44 +52,52 @@ public class OrderModel {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public String getCustomer_email() {
+        return customer_email;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setCustomer_email(String customer_email) {
+        this.customer_email = customer_email;
     }
 
-    public String getWeight() {
-        return weight;
+    public String getCustomer_address() {
+        return customer_address;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setCustomer_address(String customer_address) {
+        this.customer_address = customer_address;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public String getCustomer_contact() {
+        return customer_contact;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setCustomer_contact(String customer_contact) {
+        this.customer_contact = customer_contact;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOrder_status() {
+        return order_status;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOrder_status(String order_status) {
+        this.order_status = order_status;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getSeller_notification_view() {
+        return seller_notification_view;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setSeller_notification_view(String seller_notification_view) {
+        this.seller_notification_view = seller_notification_view;
+    }
+
+    public String getCustomer_mail_send() {
+        return customer_mail_send;
+    }
+
+    public void setCustomer_mail_send(String customer_mail_send) {
+        this.customer_mail_send = customer_mail_send;
     }
 
     public Integer getSeller_id() {
@@ -104,19 +107,5 @@ public class OrderModel {
     public void setSeller_id(Integer seller_id) {
         this.seller_id = seller_id;
     }
-
-    @Column(name = "quantity")
-    private Integer quantity;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "image_url")
-    private String image_url;
-
-    @Column(name = "seller_id")
-    private Integer seller_id;
-
-
 }
 

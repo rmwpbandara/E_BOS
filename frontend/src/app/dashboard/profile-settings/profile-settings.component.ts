@@ -25,6 +25,8 @@ export class ProfileSettingsComponent implements OnInit {
       name: [this.user_data['name'], Validators.compose([Validators.required])],
       location: [this.user_data['location'], Validators.compose([Validators.required])],
       contact: [this.user_data['contact'], Validators.compose([Validators.required])],
+      bank_name: [this.user_data['bank_name'], Validators.compose([Validators.required])],
+      account_number: [this.user_data['account_number'], Validators.compose([Validators.required])],
       email: [this.user_data['email'], Validators.compose([Validators.email, Validators.required])],
       password: [null, Validators.compose([Validators.required, Validators.minLength(4)])],
     });

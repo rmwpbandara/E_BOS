@@ -5,6 +5,7 @@ import { AddProductComponent } from './products/add-product/add-product.componen
 import { ViewProductComponent } from './products/view-product/view-product.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { ListOrderComponent } from './list-order/list-order.component';
 
 
 export const DashboardRoutes: Routes = [
@@ -14,6 +15,7 @@ export const DashboardRoutes: Routes = [
     component: DashboardComponent,
     // product routes
     children: [
+      { path: '', component: ListOrderComponent },
       { path: 'products-add', component: AddProductComponent },
       { path: 'products-view', component: ViewProductComponent },
       { path: 'products-edit', component: EditProductComponent },

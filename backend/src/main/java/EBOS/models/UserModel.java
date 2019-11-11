@@ -24,6 +24,12 @@ public class UserModel {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "bank_name")
+    private String bank_name;
+
+    @Column(name = "account_number")
+    private String account_number;
+
     @Column(name = "password")
     private String password;
 

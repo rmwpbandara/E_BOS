@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserServices {
     @Override
     public UserModel updateUser(UserModel newUserData) {
         if(newUserData.getId() != null) {
-            
+
             UserModel user = userRepository.save(newUserData);
             user.setPassword("null");
             return user;

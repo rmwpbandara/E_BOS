@@ -22,6 +22,8 @@ export class RegisterComponent implements OnInit {
       name: ['', Validators.compose([Validators.required])],
       location: ['', Validators.compose([Validators.required])],
       contact: ['', Validators.compose([Validators.required])],
+      bank_name: ['', Validators.compose([Validators.required])],
+      account_number: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.email, Validators.required])],
       password: [null, Validators.compose([Validators.required, Validators.minLength(4)])],
       repeatpassword: [null, Validators.compose([Validators.required, Validators.minLength(4)])]

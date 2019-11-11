@@ -32,6 +32,25 @@
                     </div>
                 </div>
 
+                
+                <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['bank_name'].valid && (userForm.get('bank_name').touched || submitted)}">
+                        <label for="bank_name"><b>Bank Name</b></label>
+                        <input class="form-control" type="text" placeholder="Enter bank name" formControlName="bank_name" name="bank_name" required>
+                        <div *ngIf="userForm.get('bank_name').touched || submitted" style='color:red;'>
+                            <div *ngIf="userForm.get('bank_name').hasError('required')">Bank name is required</div> 
+                            <div *ngIf="!userForm.get('bank_name').hasError('required') && userForm.hasError('bank_name', 'bank_name')">Bank name is invalid</div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['account_number'].valid && (userForm.get('account_number').touched || submitted)}">
+                        <label for="account_number"><b>Account Number</b></label>
+                        <input class="form-control" type="text" placeholder="Enter Account Number" formControlName="account_number" name="account_number" required>
+                        <div *ngIf="userForm.get('account_number').touched || submitted" style='color:red;'>
+                            <div *ngIf="userForm.get('account_number').hasError('required')">Account Number is required</div> 
+                            <div *ngIf="!userForm.get('contact').hasError('required') && userForm.hasError('account_number', 'account_number')">Account Number is invalid</div>
+                        </div>
+                    </div>
+
                 <div class="form-group" [ngClass]="{'has-danger':!userForm.controls['email'].valid && (userForm.get('email').touched || submitted)}">
                     <label for="email"><b>Email</b></label>
                     <input class="form-control" type="email" placeholder="Enter email" formControlName="email" name="email" required>
