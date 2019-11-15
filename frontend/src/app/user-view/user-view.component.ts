@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { UserService } from '../_service/custom/user.service';
 import { Router } from '@angular/router';
 import { ProductService } from '../_service/custom/product.service';
+import { CartService } from '../_service/custom/cart.service';
+import { AdService } from '../dashboard/advertiesments/ad.service';
 
 @Component({
   selector: 'app-user-view',
@@ -16,10 +18,16 @@ export class UserViewComponent implements OnInit {
   user_data;
   search_data;
   cart_products = [];
+  ads;
   
-  constructor(fb: FormBuilder, private productServiceObject: ProductService, private userService : UserService , private router: Router) { 
+  constructor(fb: FormBuilder, private productServiceObject: ProductService, 
+    private userService : UserService , 
+    private router: Router,
+    public cartService: CartService,
+    private adService: AdService) { 
     this.search_data = JSON.parse(localStorage.getItem('search_data'));
 
+  
     this.userService.getUser()
     .subscribe(res=>{
       let user_data =JSON.parse(res['_body']);
@@ -29,21 +37,15 @@ export class UserViewComponent implements OnInit {
 
     
     if( (!this.search_data) || ( this.search_data['min_price'] == "" && this.search_data['max_price'] == "" && this.search_data['manufacture_id'] == "" && this.search_data['product_name'] == "") ){
-      this.productServiceObject.viewProducts().subscribe(res=>{
-        let data =JSON.parse(res['_body']);
-        let i = 1
-        while(i < 5){
-  
-          this.products.push(data[data.length-i]);
-          i++;
-        }
+      this.productServiceObject.viewAllProducts().subscribe((res:any)=>{
+        this.products = JSON.parse(res._body);
       });
     } else {
 
       // console.log(this.search_data);
 
       // searched data in the local storage
-    this.productServiceObject.viewProducts().subscribe(res=>{
+    this.productServiceObject.viewAllProducts().subscribe(res=>{
       let data =JSON.parse(res['_body']);
       data.forEach( (myObject, index) => {
 
@@ -174,6 +176,10 @@ export class UserViewComponent implements OnInit {
 
   ngOnInit() : void{
 
+    this.adService.getAds().subscribe(val => {
+      this.ads = JSON.parse(val['_body']);
+    })
+
     let search_data_product_name = '';
     let search_data_min_price = '';
     let search_data_max_price = '';
@@ -202,18 +208,12 @@ export class UserViewComponent implements OnInit {
   }
 
   addToCart(product){
+    this.cartService.addCartItem(product);
+    // location.reload();
+  }
 
-    localStorage.removeItem('cart_products');
-    localStorage.setItem('cart_products',JSON.stringify(product));
-
-    let current_product_data = JSON.parse(localStorage.getItem('cart_products'));
-
-    this.cart_products.push(current_product_data);
-
-    console.log(this.cart_products);
-    
-
-
+  removeCart(product){
+    this.cartService.removeCartItem(product);
     // location.reload();
   }
 }

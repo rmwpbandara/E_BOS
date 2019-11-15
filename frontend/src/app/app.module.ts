@@ -17,6 +17,7 @@ import { UserService } from './_service/custom/user.service';
 import { CommonService } from './_service/common.service';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { OrderReceiptComponent } from './order-receipt/order-receipt.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { OrderReceiptComponent } from './order-receipt/order-receipt.component';
       { path: '', component: UserViewComponent }
     ]),
     SharedModuleModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   providers: [CommonService, UserService, AuthGuard],
   bootstrap: [AppComponent]

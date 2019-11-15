@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import { CommonService } from '../common.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private commonsService:CommonService) { }
+  constructor(private commonsService:CommonService,
+    private auth: UserService) { }
 
-  addProduct(form_data){
-    return this.commonsService.apiPost(form_data, 'product/add');
+  addProduct(form_data: FormData){
+    return this.commonsService.apiPostMulti(form_data, 'product/add/' + this.auth.getLocalCurrentUserId());
   }
 
   viewProducts(){
+    return this.commonsService.apiGet('product/get/'+this.auth.getLocalCurrentUserId());
+  }
+
+  viewAllProducts(){
     return this.commonsService.apiGet('product/all');
   }
 

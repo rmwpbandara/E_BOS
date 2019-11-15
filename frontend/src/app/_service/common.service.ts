@@ -19,6 +19,15 @@ export class CommonService {
       .post(this.rootPath + apiURL, requestBody, { headers: headers})
   }
 
+  apiPostMulti(requestBody: FormData, apiURL: string) {
+    // let headers = new Headers({ 'Content-Type': 'multipart/form-data' });
+
+    // console.log('headers', headers);
+    
+    return this.http
+      .post(this.rootPath + apiURL, requestBody)
+  }
+
   apiGet(apiURL: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Accept', 'application/json');

@@ -1,0 +1,20 @@
+<h2>All Ads</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <!-- <th>#</th> -->
+            <th>Title</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ad of ads">
+            <!-- <td>{{ product.id }}</td> -->
+            <td>{{ ad.title }}</td> 
+            <td>{{ ad.description }}</td>
+            <td><img src="{{ad.image_url}}" style="height: 40px; width: 50px;"></td>
+            <td><a (click)="deleteAd(ad)" class="btn btn-danger btn-sm">Delete</a></td>
+        </tr>
+    </tbody>
+</table>

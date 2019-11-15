@@ -40,12 +40,12 @@
         </div>
     </div>
 
-    <div class="form-group" [ngClass]="{'has-danger':!productEditForm.controls['image_url'].valid && (productEditForm.get('image_url').touched || submitted)}">
-        <label for="image_url"><b>Product Image :</b></label>
-        <input class="form-control" type="file" formControlName="image_url" required>
-        <div *ngIf="productEditForm.get('image_url').touched || submitted" style='color:red;'>
-            <div *ngIf="productEditForm.get('image_url').hasError('required')">Product Image is required</div> 
+    <div class="form-group" [ngClass]="{'has-danger':!productAddForm.controls['image_url'].valid && (productAddForm.get('image_url').touched || submitted)}">
+            <label for="image_url"><b>Product Image :</b></label>
+            <input class="form-control" type="file" (change)="onFileSelect($event)" required>
+            <div *ngIf="productAddForm.get('image_url').touched || submitted" style='color:red;'>
+                <div *ngIf="productAddForm.get('image_url').hasError('required')">Product Image is required</div> 
+            </div>
         </div>
-    </div>
     <button type="submit" class="btn btn-primary" [disabled]="!productEditForm.valid">Submit</button>
 </form>

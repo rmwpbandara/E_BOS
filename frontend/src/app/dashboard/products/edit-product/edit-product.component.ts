@@ -21,6 +21,7 @@ export class EditProductComponent implements OnInit {
     this.product_data = JSON.parse(localStorage.getItem('edit_product'));
 
     this.productEditForm = fb.group({
+      id: [this.product_data['id'], Validators.required],
       name: [this.product_data['name'], Validators.required],
       price: [this.product_data['price'], Validators.required],
       weight: [this.product_data['weight'], Validators.required],
@@ -35,7 +36,47 @@ export class EditProductComponent implements OnInit {
   }
   ngOnInit() {  }
 
-  updateProduct(form_data){
+  updateProduct(form_data) {
+
+
+
+    let image_url = form_data['image_url'];
+
+    const fd = new FormData();
+    
+    fd.set("file", this.productEditForm.get('image_url').value);
+    this.productEditForm.get('image_url').setValue(null);
+    fd.set("body", JSON.stringify(this.productEditForm.value));
+  
+
+    this.productService.addProduct(fd).subscribe(res => {
+      // console.log('res => ', res);
+      if (res['ok']) {
+
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Product Added Successfully !',
+          showConfirmButton: false,
+          timer: 2000
+        });
+
+        this.productEditForm.reset();
+
+     // this.router.navigate(['/dashboard/products-view']);
+      }
+
+    })
+  }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.productEditForm.get('image_url').setValue(file);
+    }
+  }
+
+  updateProductOld(form_data){
 
     form_data['id'] = this.product_data['id'];
     form_data['seller_id'] = this.seller_id;

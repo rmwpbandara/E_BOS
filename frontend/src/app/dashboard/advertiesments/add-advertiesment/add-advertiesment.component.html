@@ -1,0 +1,34 @@
+<form [formGroup]="adForm" (ngSubmit)="addAd(adForm.value)">
+    <div class="form-group"
+        [ngClass]="{'has-danger':!adForm.controls['title'].valid && (adForm.get('title').touched || submitted)}">
+        <h2>Add Advertiesment</h2>
+        <label for="title"><b>Advertiesment title :</b></label>
+        <input class="form-control" type="text" placeholder="Enter Advertiesment Title" formControlName="title" name="title"
+            required>
+        <div *ngIf="adForm.get('title').touched || submitted" style='color:red;'>
+            <div *ngIf="adForm.get('title').hasError('required')">Product Name is required</div>
+        </div>
+    </div>
+
+    <div class="form-group"
+        [ngClass]="{'has-danger':!adForm.controls['description'].valid && (adForm.get('description').touched || submitted)}">
+        <label for="description"><b>Advertiesment Description :</b></label>
+        <input class="form-control" type="text" placeholder="Enter Advertiesment Description "
+            formControlName="description" name="description" required>
+        <div *ngIf="adForm.get('description').touched || submitted" style='color:red;'>
+            <div *ngIf="adForm.get('description').hasError('required')">Advertiesment Description is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group"
+        [ngClass]="{'has-danger':!adForm.controls['image_url'].valid && (adForm.get('image_url').touched || submitted)}">
+        <label for="image_url"><b>Advertiesment Image :</b></label>
+        <input class="form-control" type="file" (change)="onFileSelect($event)" required>
+        <div *ngIf="adForm.get('image_url').touched || submitted" style='color:red;'>
+            <div *ngIf="adForm.get('image_url').hasError('required')">Advertiesment Image is required</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!productAddForm.valid">Submit</button>
+</form>

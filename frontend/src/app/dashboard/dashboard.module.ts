@@ -10,13 +10,15 @@ import { RouterModule } from '@angular/router';
 import { SharedModuleModule } from '../shared-module/shared-module.module';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { ListOrderComponent } from './list-order/list-order.component';
+import { AddAdvertiesmentComponent } from './advertiesments/add-advertiesment/add-advertiesment.component';
+import { ViewAdvertiesmentComponent } from './advertiesments/view-advertiesment/view-advertiesment.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     AddProductComponent, 
     ViewProductComponent, 
-    EditProductComponent, ProfileSettingsComponent, ListOrderComponent
+    EditProductComponent, ProfileSettingsComponent, ListOrderComponent, AddAdvertiesmentComponent, ViewAdvertiesmentComponent
   ],
   imports: [
     CommonModule,

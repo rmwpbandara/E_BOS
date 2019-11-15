@@ -12,38 +12,43 @@ import Swal from 'sweetalert2'
 export class AddProductComponent implements OnInit {
 
   productAddForm: FormGroup;
-  seller_id;
 
   constructor(fb: FormBuilder, private productService: ProductService, private router: Router) {
-    let data = JSON.parse(localStorage.getItem('user'));
-    this.seller_id = data['id'];
     this.productAddForm = fb.group({
       name: ['', Validators.compose([Validators.required])],
       price: ['', Validators.compose([Validators.required])],
       weight: ['', Validators.compose([Validators.required])],
       quantity: ['', Validators.compose([Validators.required])],
       description: ['', Validators.compose([Validators.required])],
-      image_url: ['', Validators.compose([Validators.required])],
+      image_url: [null, Validators.compose([Validators.required])],
     });
   }
 
   ngOnInit() {
 
   }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.productAddForm.get('image_url').setValue(file);
+    }
+  }
+
   addProduct(form_data) {
 
 
 
     let image_url = form_data['image_url'];
 
-    let image_url_new = image_url.replace("C:\\fakepath\\","../../assets/img/");    
-
-    form_data['image_url'] = image_url_new;
-
+    const fd = new FormData();
     
-    form_data['seller_id'] = this.seller_id;
+    fd.set("file", this.productAddForm.get('image_url').value);
+    this.productAddForm.get('image_url').setValue(null);
+    fd.set("body", JSON.stringify(this.productAddForm.value));
+  
 
-    this.productService.addProduct(form_data).subscribe(res => {
+    this.productService.addProduct(fd).subscribe(res => {
       // console.log('res => ', res);
       if (res['ok']) {
 

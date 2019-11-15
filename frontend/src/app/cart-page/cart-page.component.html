@@ -1,23 +1,76 @@
 <app-guest-header></app-guest-header>
-<div style="background : url('../../assets/img/images.jpg'); object-fit:cover ; min-height:100vh; background-repeat: no-repeat; background-attachment: fixed;">
-    <div class="container text-center text-white" style="padding-top: 60px;">
+<div
+    style="background : url('../../assets/img/images.jpg'); object-fit:cover ; min-height:100vh; background-repeat: no-repeat; background-attachment: fixed;">
+    <div class="container text-white" style="padding-top: 60px;">
+        <div class="row">
+            <div class="col-4 w-100 p-2 m-1" style="background-color: chocolate;"
+                *ngFor="let product of cartService.getItems()">
+                <img class="result-content-image w-100" src="{{product.image_url}}">
+                <h6 class="result-content-title pt-2"> {{ product.name }} </h6>
+                <p class="result-content-description"> Product Price : {{ product.price }}/- </p>
+                <p class="result-content-description"> Product Quantity : {{ product.quantity }} </p>
+                <p class="result-content-description"> Description : {{  product.description }} </p>
+                <p class="result-content-description"> Your order : {{  product.userQuantity }} x Rs.{{product.price}} =
+                    Rs.{{  product.userQuantity*product.price }} </p>
+                <div *ngIf="cartService.isInCart(product)">
+                    <button class="btn btn-success add-to-cart-btn" (click)="cartService.removeCartItem(product)">Remove
+                        from
+                        cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-100">
+        <div class="w-50 pb-4 pt-4" style="margin-left: 25%;">
+            <form [formGroup]="userForm" (ngSubmit)="addOrder(userForm.value)">
 
-        <h1>Design your cart page here</h1>
-       
-        <form class="col-md-6 offset-3" [formGroup]="TestForm" (ngSubmit)="addOrder(TestForm.value)">
+                <div class="form-group"
+                    [ngClass]="{'has-danger':!userForm.controls['email'].valid && (userForm.get('email').touched || submitted)}">
+                    <label class="text-white" for="email"><b>Email</b></label>
+                    <input class="form-control" type="email" placeholder="Enter Email" formControlName="email"
+                        name="email" required>
+                    <div *ngIf="userForm.get('email').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('email').hasError('required')">Email is required</div>
+                        <div *ngIf="!userForm.get('email').hasError('required') && userForm.hasError('email', 'email')">
+                            Email is invalid</div>
+                    </div>
+                </div>
 
-            <input type="text" formControlName="test_text">
-            <br>
-            <br>
-            <input type="number" formControlName="test_number">
-            <br>
-            <br>
-            
-            <button type="submit" class="btn btn-primary" [disabled]="!TestForm.valid">Submit</button>
-        </form>
-        
+                <div class="form-group"
+                    [ngClass]="{'has-danger':!userForm.controls['nic'].valid && (userForm.get('nic').touched || submitted)}">
+                    <label class="text-white" for="nic"><b>Nic</b></label>
+                    <input class="form-control" type="text" placeholder="Enter nic" formControlName="nic" name="nic"
+                        required>
+                    <div *ngIf="userForm.get('nic').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('nic').hasError('required')">Nic is required</div>
+                    </div>
+                </div>
 
-        <!-- <a href="#" class="btn btn-success" [routerLink]="['/order-receipt']">Place Order</a> -->
+                <div class="form-group"
+                    [ngClass]="{'has-danger':!userForm.controls['phone'].valid && (userForm.get('phone').touched || submitted)}">
+                    <label class="text-white" for="phone"><b>phone</b></label>
+                    <input class="form-control" type="text" placeholder="Enter phone" formControlName="phone"
+                        name="phone" required>
+                    <div *ngIf="userForm.get('phone').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('phone').hasError('required')">phone is required</div>
+                    </div>
+                </div>
 
+                <div class="form-group"
+                    [ngClass]="{'has-danger':!userForm.controls['address'].valid && (userForm.get('address').touched || submitted)}">
+                    <label class="text-white" for="address"><b>address</b></label>
+                    <input class="form-control" type="text" placeholder="Enter address" formControlName="address"
+                        name="address" required>
+                    <div *ngIf="userForm.get('address').touched || submitted" style='color:red;'>
+                        <div *ngIf="userForm.get('address').hasError('required')">address is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; opacity: 1;"
+                        [disabled]="!userForm.valid">Place order</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

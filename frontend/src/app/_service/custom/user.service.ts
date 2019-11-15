@@ -29,4 +29,12 @@ export class UserService {
   updateUser(data){
     return this.commonsService.apiPut(data, 'user/update');
   }
+
+  getLocalCurrentUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  getLocalCurrentUserId() {
+    return JSON.parse(localStorage.getItem('user')).id;
+  }
 }

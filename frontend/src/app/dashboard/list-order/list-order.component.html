@@ -2,25 +2,34 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>User Email</th>
-            <th></th>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Products</th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <!-- <tr *ngFor="let product of products">
-            <td>{{ product.name }}</td> 
-            <td>{{ product.price }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.description }}</td>
-            <td><img src="{{product.image_url}}" style="height: 40px; width: 50px;"></td>
-
-            <td><a (click)="editProduct(product.id)" class="btn btn-warning btn-sm">Edit</a></td>
-            <td><a (click)="deleteProduct(product.id)" class="btn btn-danger btn-sm">Delete</a></td>
-        </tr> -->
+        <tr *ngFor="let order of orders">
+            <td>{{ order.id }}</td> 
+            <td>{{ order.temporyUser.email }}</td>
+            <td>{{ order.temporyUser.address }}</td>
+            <td>{{ order.temporyUser.phone }}</td>
+            <td>
+                <div *ngFor="let prod of order.orderProducts">
+                    {{prod.quantity}} x {{prod.productModel.name}}
+                </div>
+            </td>
+            <td>
+                <a *ngIf="isApproved(order)" (click)="approve(order)"  class="btn btn-primary btn-sm">Approve</a>
+                <span *ngIf="!isApproved(order)">APPROVED</span>
+            </td>
+            <td>
+                <a *ngIf="isApproved(order)" (click)="reject(order)" class="btn btn-danger btn-sm">Reject</a>
+                <span *ngIf="!isApproved(order)">APPROVED</span>
+            </td>
+        </tr>
     </tbody>
 </table>

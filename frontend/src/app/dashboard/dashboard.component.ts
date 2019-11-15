@@ -13,6 +13,8 @@ export const ROUTES: RouteInfo[] = [
   // { path: '/dashboard/products-edit', title: 'Edit Product', icon: '', class: '' },
   { path: '/dashboard/products-view', title: 'View Products', icon: '', class: 'nav-group-border-bottom padding-bottom' },
   { path: '/dashboard/profile-settings', title: 'Profile Settings', icon: '', class: 'padding-top padding-bottom nav-group-border-bottom' },
+  { path: '/dashboard/advertiesemnts-add', title: 'Add advertiesment', icon: '', class: 'padding-top' },
+  { path: '/dashboard/advertiesemnts-view', title: 'View advertiesment', icon: '', class: 'padding-top' },
 ];
 
 
