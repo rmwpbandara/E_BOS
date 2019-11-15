@@ -3,6 +3,7 @@ package EBOS.services.implementations;
 import EBOS.models.ProductModel;
 import EBOS.repositories.ProductRepository;
 import EBOS.services.ProductService;
+import EBOS.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private UserServices userServices;
 
     @Override
     public List<ProductModel> findAllProducts() {
@@ -50,5 +54,12 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
         return "success";
     }
+
+    @Override
+    public List<ProductModel> findBySeller(Integer id) {
+        return productRepository.findAllBySeller(userServices.getById(id));
+    }
+
+
 
 }

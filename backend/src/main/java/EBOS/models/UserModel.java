@@ -1,38 +1,83 @@
 package EBOS.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name= "users")
+@Table(name = "users")
 public class UserModel {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "location")
     private String location;
-
-    @Column(name = "contact")
     private String contact;
-
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "bank_name")
-    private String bank_name;
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<ProductModel> productModels;
 
-    @Column(name = "account_number")
-    private String account_number;
+    @OneToMany(mappedBy = "addedBy", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Advertiesement> advertiesements;
 
-    @Column(name = "password")
+    public Set<Advertiesement> getAdvertiesements() {
+        return advertiesements;
+    }
+
+    public void setAdvertiesements(Set<Advertiesement> advertiesements) {
+        this.advertiesements = advertiesements;
+    }
+
+    public Set<ProductModel> getProductModels() {
+        return productModels;
+    }
+
+    public void setProductModels(Set<ProductModel> productModels) {
+        this.productModels = productModels;
+    }
+
     private String password;
 
+
+
+    private String account_number;
+
+    private String bank_name;
+
+    private String randomToken;
+
+    public String getAccount_number() {
+        return account_number;
+    }
+
+    public void setAccount_number(String account_number) {
+        this.account_number = account_number;
+    }
+
+    public String getBank_name() {
+        return bank_name;
+    }
+
+    public void setBank_name(String bank_name) {
+        this.bank_name = bank_name;
+    }
+
+
+    public UserModel() {
+    }
+
+    public String getRandomToken() {
+        return randomToken;
+    }
+
+    public void setRandomToken(String randomToken) {
+        this.randomToken = randomToken;
+    }
 
     public Integer getId() {
         return id;

@@ -1,5 +1,12 @@
 package EBOS.models;
+import EBOS.controllers.Order;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name= "products")
@@ -7,31 +14,30 @@ public class ProductModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "price")
     private double price;
-
-    @Column(name = "weight")
     private String weight;
-
-    @Column(name = "quantity")
     private Integer quantity;
-
-    @Column(name = "description")
     private String description;
-
-    @Column(name = "image_url")
     private String image_url;
 
-    @Column(name = "seller_id")
-    private Integer seller_id;
+    @OneToMany(mappedBy = "productModel", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<OrderProduct> orderProducts;
 
+    @ManyToOne
+    @JoinColumn
+    private UserModel seller;
+
+    public Set<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(Set<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
 
     public Integer getId() {
         return id;
@@ -89,11 +95,12 @@ public class ProductModel {
         this.image_url = image_url;
     }
 
-    public Integer getSeller_id() {
-        return seller_id;
+    public UserModel getSeller() {
+        return seller;
     }
 
-    public void setSeller_id(Integer seller_id) {
-        this.seller_id = seller_id;
+    public void setSeller(UserModel seller) {
+        this.seller = seller;
     }
+
 }

@@ -1,8 +1,11 @@
 package EBOS.repositories;
 
 import EBOS.models.OrderModel;
+import EBOS.models.OrderProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface OrderRepository extends JpaRepository<OrderModel, Integer> {
 
@@ -14,5 +17,7 @@ public interface OrderRepository extends JpaRepository<OrderModel, Integer> {
     //update
     //delete
     //custom query
+
+    List<OrderModel> findDistinctByOrderProductsIsIn(List<OrderProduct> orderProducts);
 }
 

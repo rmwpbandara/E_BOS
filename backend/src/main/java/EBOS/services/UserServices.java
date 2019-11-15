@@ -7,8 +7,11 @@ import java.util.List;
 public interface UserServices {
 
     List<UserModel> findAllUsers();
+
     String registerUser(UserModel userData);
     UserModel loginUser(UserModel userData);
-    UserModel updateUser(UserModel newUserData);
+    String getResetLink(String email);
+    String resetPassword(String password,String code,String email);
 
+    UserModel getById(Integer id);
 }
