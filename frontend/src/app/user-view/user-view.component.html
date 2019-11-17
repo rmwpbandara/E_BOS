@@ -106,7 +106,7 @@
                             <p class="result-content-description"> Product Quantity : {{ product.quantity }} </p>
                             <p class="result-content-description"> Description : {{  product.description }} </p>
                             <div *ngIf="!cartService.isInCart(product)">
-                                <input type="number" min="1" [max]="product.quantitiy"
+                                <input style="width: 20%; margin-right: 10px;" type="number" min="1" [max]="product.quantitiy"
                                     [(ngModel)]="product.userQuantity">
                                 <button class="btn btn-success add-to-cart-btn" (click)="addToCart(product)">Add to
                                     Cart</button>

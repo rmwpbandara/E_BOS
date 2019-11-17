@@ -56,7 +56,7 @@ export class UserViewComponent implements OnInit {
         
         let product_name = myObject.name.toLowerCase();
         let product_price = myObject.price;
-        let product_manufacture_id = myObject.seller_id;
+        let product_manufacture_id = myObject.seller.id;
         
         let max = search_data_max_price >= product_price;
         let min = search_data_min_price <= product_price;
