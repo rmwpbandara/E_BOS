@@ -10,6 +10,9 @@ public interface UserServices {
 
     String registerUser(UserModel userData);
     UserModel loginUser(UserModel userData);
+
+    UserModel updateUser(UserModel userData);
+
     String getResetLink(String email);
     String resetPassword(String password,String code,String email);
 

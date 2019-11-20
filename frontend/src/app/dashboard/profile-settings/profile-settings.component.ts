@@ -41,6 +41,7 @@ export class ProfileSettingsComponent implements OnInit {
     user['id'] = this.user_data['id'];
 
     this.userService.updateUser(user).subscribe(res=>{
+      console.log(res['_body']);
 
       let res_data = JSON.parse(res['_body']);
       

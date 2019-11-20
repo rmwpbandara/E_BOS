@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -37,12 +38,32 @@ public class UserServiceImpl implements UserServices {
 //            String encrypted = passwordEncoder.encode(userData.getPassword());
 //            userData.setPassword(encrypted);
             userData.setRandomToken(passwordEncoder.encode(userData.getEmail()));
+            String encPass= Base64.getEncoder().encodeToString(userData.getPassword().getBytes());
+            userData.setPassword(encPass);
             userRepository.save(userData);
             userData.setPassword(null);
             return "registered";
         } catch (Exception e) {
             System.out.println(e.toString());
             return "error";
+        }
+
+    }
+
+    @Override
+    public UserModel updateUser(UserModel userData) {
+        try {
+//            String encrypted = passwordEncoder.encode(userData.getPassword());
+//            userData.setPassword(encrypted);
+            userData.setRandomToken(passwordEncoder.encode(userData.getEmail()));
+            String encPass= Base64.getEncoder().encodeToString(userData.getPassword().getBytes());
+            userData.setPassword(encPass);
+            userRepository.save(userData);
+            userData.setPassword(null);
+            return userData;
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return null;
         }
 
     }
@@ -85,11 +106,11 @@ public class UserServiceImpl implements UserServices {
         String email = userData.getEmail();
         UserModel logUser = userRepository.findByEmail(email);
 
-
+        String rec = Base64.getEncoder().encodeToString(userData.getPassword().getBytes());
         if(logUser == null){
             return null;
         }
-        else if (userData.getPassword().equals(logUser.getPassword())) {
+        else if (rec.equals(logUser.getPassword())) {
             UserModel loggedUser = userRepository.findByEmail(email);
             loggedUser.setPassword(null);
             return loggedUser;

@@ -27,7 +27,8 @@ export class UserService {
   }
 
   updateUser(data){
-    return this.commonsService.apiPut(data, 'user/update');
+    console.log(data);
+    return this.commonsService.apiPost(data, 'user/update');
   }
 
   getLocalCurrentUser() {

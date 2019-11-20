@@ -11,6 +11,8 @@ import Swal from 'sweetalert2'
 })
 export class EditProductComponent implements OnInit {
 
+  isImage = true;
+
   productEditForm: FormGroup;
   seller_id;
   product_details;
@@ -56,20 +58,21 @@ export class EditProductComponent implements OnInit {
         Swal.fire({
           position: 'top-end',
           type: 'success',
-          title: 'Product Added Successfully !',
+          title: 'Product Updated Successfully !',
           showConfirmButton: false,
           timer: 2000
         });
 
         this.productEditForm.reset();
 
-     // this.router.navigate(['/dashboard/products-view']);
+        this.router.navigate(['/dashboard/products-view']);
       }
 
     })
   }
 
   onFileSelect(event) {
+    this.isImage= false
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.productEditForm.get('image_url').setValue(file);

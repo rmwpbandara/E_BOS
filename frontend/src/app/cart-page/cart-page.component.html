@@ -22,8 +22,8 @@
     </div>
     <div class="w-100">
         <div class="w-50 pb-4 pt-4" style="margin-left: 25%;">
+            <h1 class="text-white w-100 text-center">TOTAL PRICE : Rs. {{cartService.getTotal()}}</h1>
             <form [formGroup]="userForm" (ngSubmit)="addOrder(userForm.value)">
-
                 <div class="form-group"
                     [ngClass]="{'has-danger':!userForm.controls['email'].valid && (userForm.get('email').touched || submitted)}">
                     <label class="text-white" for="email"><b>Email</b></label>

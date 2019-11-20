@@ -2,12 +2,14 @@ package EBOS.controllers;
 
 import EBOS.models.CommonRequest;
 import EBOS.models.UserModel;
+import EBOS.repositories.UserRepository;
 import EBOS.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +20,9 @@ public class User {
     @Autowired
     private UserServices userServices;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("/all") // use get request
     public List<UserModel> allUsers(){
         return userServices.findAllUsers();
@@ -25,11 +30,12 @@ public class User {
 
     @PostMapping("/register")
     public String registerUser(@RequestBody UserModel userData){
-        byte[] array = new byte[7]; // length is bounded by 7
-        new Random().nextBytes(array);
-        String generatedString = new String(array, StandardCharsets.UTF_8);
-        userData.setRandomToken(generatedString);
         return userServices.registerUser(userData);
+    }
+
+    @PostMapping("/update")
+    public UserModel updateUser(@RequestBody UserModel userModel){
+        return userServices.updateUser(userModel);
     }
 
     @GetMapping("/reset/{email}")

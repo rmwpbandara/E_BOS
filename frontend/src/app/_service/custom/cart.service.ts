@@ -8,14 +8,27 @@ import { HttpClient } from '@angular/common/http';
 export class CartService {
 
   static cartItems = [];
+  static total = 0;
 
   constructor(private http: HttpClient) {
     this.initCart();
   }
 
+  getTotal(){
+    this.calcPrice();
+    return CartService.total;
+  }
+
   clearCart() {
     localStorage.removeItem('cart')
     CartService.cartItems = [];
+  }
+
+  calcPrice(){
+    CartService.total = 0;
+    CartService.cartItems.forEach(item=>{
+      CartService.total += item.userQuantity * item.price;
+    });
   }
 
   initCart() {
@@ -33,7 +46,7 @@ export class CartService {
   }
 
   removeCartItem(item) {
-    CartService.cartItems.splice(CartService.cartItems.indexOf(x => x.id === item.id), 1);
+    CartService.cartItems.splice(CartService.cartItems.indexOf(x => x.id === item.id) - 1, 1);
     this.saveCart();
   }
 
